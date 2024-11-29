@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    {% include "head.html" %}
+    {% load static %}
+
+</head>
+
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    {% comment %} START HEADER {% endcomment %}
+    {% include "header.html" %}
+    {% comment %} END HEADER {% endcomment %}
+
+    
+
+    <!-- Blog Details Hero Begin -->
+    <section class="blog-details-hero set-bg" data-setbg="{% static "img/blog/details/details-hero.jpg" %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="blog__details__hero__text">
+                        <h2>Sobre Nosotros</h2>
+                        <ul>
+                            <li>By Michael Scofield</li>
+                            <li>January 14, 2019</li>
+                            <li>8 Comments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Hero End -->
+
+    <!-- Blog Details Section Begin -->
+    <section class="blog-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-5 order-md-1 order-2">
+                    <div class="blog__sidebar">
+                        <div class="blog__sidebar__search">
+                            <form action="{% url 'search_products' %}" method="GET">
+                                <input type="text" placeholder="Buscar...">
+                                <button type="submit"><span class="icon_search"></span></button>
+                            </form>
+                        </div>
+                        {% comment %} <div class="blog__sidebar__item">
+                            <h4>Categories</h4>
+                            <ul>
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Beauty (20)</a></li>
+                                <li><a href="#">Food (5)</a></li>
+                                <li><a href="#">Life Style (9)</a></li>
+                                <li><a href="#">Travel (10)</a></li>
+                            </ul>
+                        </div> {% endcomment %}
+                        <div class="blog__sidebar__item">
+                            <h4>PROVEEDORES DIRECTOS</h4>
+                            <div class="blog__sidebar__recent">
+                                <a href="#" class="blog__sidebar__recent__item">
+                                    <div class="blog__sidebar__recent__item__pic">
+                                        <img src="https://static.wixstatic.com/media/816b3c_6f816e611840470081bdcac3f4478414~mv2.png/v1/fit/w_2500,h_1330,al_c/816b3c_6f816e611840470081bdcac3f4478414~mv2.png" alt="" width="70" height="70">
+                                    </div>
+                                    <div class="blog__sidebar__recent__item__text">
+                                        <h6>ANDINA<br /> la mejor calidad</h6>
+                                        <span>Proveedor</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="blog__sidebar__recent__item">
+                                    <div class="blog__sidebar__recent__item__pic">
+                                        <img src="https://th.bing.com/th/id/R.8a5853e2553324afed84a177ba516ced?rik=0zWh95ZPPzQHmQ&pid=ImgRaw&r=0" alt="" width="70" height="70">
+                                    </div>
+                                    <div class="blog__sidebar__recent__item__text">
+                                        <h6>GLORIA<br /> La mejor leche de calidad</h6>
+                                        <span>Proveedor</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="blog__sidebar__recent__item">
+                                    <div class="blog__sidebar__recent__item__pic">
+                                        <img src="https://th.bing.com/th/id/OIP.wh7-lxicD8vMidBzhPc6GAHaHa?w=1600&h=1600&rs=1&pid=ImgDetMain" alt="" width="70" height="70">
+                                    </div>
+                                    <div class="blog__sidebar__recent__item__text">
+                                        <h6>NESTLE <br />La marca mas confiable</h6>
+                                        <span>Proveedor</span>
+                                    </div>
+                                </a>
+
+                                <a href="#" class="blog__sidebar__recent__item">
+                                    <div class="blog__sidebar__recent__item__pic">
+                                        <img src="https://static.wixstatic.com/media/816b3c_6f816e611840470081bdcac3f4478414~mv2.png/v1/fit/w_2500,h_1330,al_c/816b3c_6f816e611840470081bdcac3f4478414~mv2.png" alt="" width="70" height="70">
+                                    </div>
+                                    <div class="blog__sidebar__recent__item__text">
+                                        <h6>ANDINA<br /> la mejor calidad</h6>
+                                        <span>Proveedor</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="blog__sidebar__recent__item">
+                                    <div class="blog__sidebar__recent__item__pic">
+                                        <img src="https://th.bing.com/th/id/R.8a5853e2553324afed84a177ba516ced?rik=0zWh95ZPPzQHmQ&pid=ImgRaw&r=0" alt="" width="70" height="70">
+                                    </div>
+                                    <div class="blog__sidebar__recent__item__text">
+                                        <h6>GLORIA<br /> La mejor leche de calidad</h6>
+                                        <span>Proveedor</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="blog__sidebar__recent__item">
+                                    <div class="blog__sidebar__recent__item__pic">
+                                        <img src="https://th.bing.com/th/id/OIP.wh7-lxicD8vMidBzhPc6GAHaHa?w=1600&h=1600&rs=1&pid=ImgDetMain" alt="" width="70" height="70">
+                                    </div>
+                                    <div class="blog__sidebar__recent__item__text">
+                                        <h6>NESTLE <br />La marca mas confiable</h6>
+                                        <span>Proveedor</span>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="blog__sidebar__item">
+                            <h4>MARCAS</h4>
+                            <div class="blog__sidebar__item__tags">
+                                <a href="#">Andina</a>
+                                <a href="#">Pura Vida</a>
+                                <a href="#">Primor</a>
+                                <a href="#">La Costeña</a>
+                                <a href="#">Gloria</a>
+                                <a href="#">Nestlé</a>
+                                <a href="#">La Costeña</a>
+                                <a href="#">Bimbo</a>
+                                <a href="#">Oreo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-7 order-md-1 order-1">
+                    <div class="blog__details__text">
+
+                        <img src="img/blog/details/details-pic.jpg" alt="">
+
+                        <h3>MISION</h3>
+
+                        <p>Somos la empresa IBAFEX, que ofrece productos nacionales e importados y con marca propia “Miresur” en el rubro alimenticio con el fin de expandirse a nivel nacional e internacional, ofreciendo productos de calidad,  atendiendo a las necesidades del medio ambiente y de la sociedad.</p>
+                        
+                        <h3>VISION</h3>
+
+                        <p>Al año 2028 queremos ser la primera opción de nuestros clientes, siendo reconocidos y líderes por nuestra calidad en el rubro alimentario, con colaboradores completamente dedicados a su trabajo y capaces de desarrollar sus habilidades de forma eficaz y eficiente, buscando el bien común en la sociedad y promoviendo la alimentación de tal manera que se logre una alta rentabilidad para la empresa.</p>
+                        <br>
+                        <h3>GERENTES</h3>
+                        
+                    </div>
+                    {% comment %} STAKEHOLDERS DE LA EMPRESA  {% endcomment %}
+                    <div class="blog__details__content">
+                        {% comment %} <h3>Gerentes</h3> {% endcomment %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="blog__details__author">
+                                    <div class="blog__details__author__pic">
+                                        <img src="https://i.pinimg.com/originals/25/c8/69/25c86979ece2bd51d4d6f5f579d3d5f2.png" alt="">
+                                    </div>
+                                    <div class="blog__details__author__text">
+                                        <h6>Mireille Castañeda Felix</h6>
+                                        <span>Gerente General</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="blog__details__widget">
+                                    <ul>
+                                        {% comment %} <li><span>Especializacion:</span> Food</li> {% endcomment %}
+                                        <li><span>Habilidades Blandas:</span> Liderazgo, Comunicación efectiva, Resolución de conflictos, Pensamiento estratégico</li>
+                                    </ul>
+                                    <div class="blog__details__social">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="blog__details__content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="blog__details__author">
+                                    <div class="blog__details__author__pic">
+                                        <img src="https://thumbs.dreamstime.com/b/foto-masculina-frontal-del-pasaporte-aislada-en-el-fondo-blanco-normalizaci-n-de-la-ue-149548031.jpg" alt="">
+                                    </div>
+                                    <div class="blog__details__author__text">
+                                        <h6>Andrews Ibarra Castañeda</h6>
+                                        <span>Gerente de Logística</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="blog__details__widget">
+                                    <ul>
+                                        {% comment %} <li><span>Categories:</span> Food</li> {% endcomment %}
+                                        <li><span>Habilidades Blandas:</span> Pensamiento Analítico, Adaptabilidad, Resolución De Problemas, Trabajo En Equipo.</li>
+                                    </ul>
+                                    <div class="blog__details__social">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="blog__details__content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="blog__details__author">
+                                    <div class="blog__details__author__pic">
+                                        <img src="https://karlacsphotography.com/wp-content/uploads/2020/04/JoseAndresRivera.jpg" alt="">
+                                    </div>
+                                    <div class="blog__details__author__text">
+                                        <h6>Marco Ibarra Salcedo</h6>
+                                        <span>Gerente de Inventario</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="blog__details__widget">
+                                    <ul>
+                                        {% comment %} <li><span>Categories:</span> Food</li> {% endcomment %}
+                                        <li><span>Habilidades Blandas:</span> Organización, Toma De Decisiones, Planificación.</li>
+                                    </ul>
+                                    <div class="blog__details__social">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="blog__details__content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="blog__details__author">
+                                    <div class="blog__details__author__pic">
+                                        <img src="https://th.bing.com/th/id/R.3b045b0c74d3269dc4c9a7f4afe0d5fc?rik=EWfX14p92Ev5iw&pid=ImgRaw&r=0" alt="">
+                                    </div>
+                                    <div class="blog__details__author__text">
+                                        <h6>Thalia Sánchez Salazar</h6>
+                                        <span>Gerente de Ventas</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="blog__details__widget">
+                                    <ul>
+                                        {% comment %} <li><span>Categories:</span> Food</li> {% endcomment %}
+                                        <li><span>Habilidades Blandas:</span> Negociación, Persuasión, Orientación Al Cliente, Trabajo Bajo Presión.</li>
+                                    </ul>
+                                    <div class="blog__details__social">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-envelope"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Section End -->
+
+    <!-- Related Blog Section Begin -->
+    <section class="related-blog spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related-blog-title">
+                        <h2>Post You May Like</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="img/blog/blog-1.jpg" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="img/blog/blog-2.jpg" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="img/blog/blog-3.jpg" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Visit the clean farm in the US</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related Blog Section End -->
+
+    {% comment %} START FOOTER {% endcomment %}
+    {% include "footer.html" %}
+    {% comment %} END FOOTER {% endcomment %}
+
+    {% comment %} START JS {% endcomment %}
+    {% include "js-plugins.html" %}
+    {% comment %} END JS {% endcomment %}
+
+
+
+</body>
+
+</html>

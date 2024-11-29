@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login  Page</title>
+    {% load static  %}
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "css/footer.css" %}">
+
+    
+</head>
+<body>
+    
+
+    <main class="contenedor-centrado">
+        <div class="menu-principal">
+            <section class="seccion-formulario">
+                <h2 class="texto-principal">
+                    Iniciar sesión
+                </h2>
+    
+                <form action="" method="POST" class="formulario">
+                    {% csrf_token %}
+                    {% comment %} arreglar el campo del email {% endcomment %}
+                    <input class="entrada" type="text"  id="username" name="username" placeholder="Username" required>
+                    <input class="entrada" type="password" id="password" name="password" placeholder="Contraseña" required>
+    
+                    <span class="pregunta-restablecer-contra">
+                        <a href="">¿Olvidaste tu contraseña?</a>
+                    </span>
+                    <button type="submit" class="boton-iniciar-sesion">INICIAR SESION</button>
+                </form>
+                
+            </section>
+    
+            <section class="seccion-otros-accesos">
+                <span class="consulta-otros-accesos">
+                    Tambien puedes acceder con:
+                </span>
+                <button class="boton-google">
+                    CONTINUAR CON GOOGLE
+                </button>
+                <button class="boton-facebook">
+                    CONTINUAR CON FACEBOOK
+                </button>
+            </section>
+    
+            <section class="seccion-crear-cuenta">
+                <span  class="pregunta-crear-cuenta">
+                    ¿Aún no tienes una cuenta?
+                </span>
+                <button class="boton-crear-cuenta" onclick="redirectSignup()">
+                    CREAR CUENTA
+                </button>
+            </section>
+        </div>
+        
+    </main>
+
+    <script>
+        function redirectLogin() {
+            window.location.href = "{% url "login" %}";
+        }
+    
+        function redirectSignup() {
+            window.location.href = "{% url "signup" %}";
+        }
+    
+        {% comment %} function exit() {
+            window.location.href = "{% url "exit" %}";
+        } {% endcomment %}
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,740 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+{% include "head.html" %}
+
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    
+<!-- Humberger Begin -->
+<div class="humberger__menu__overlay"></div>
+<div class="humberger__menu__wrapper">
+    <div class="humberger__menu__logo">
+        <a href="#"><img src="{% static "img/logo.png" %}" alt="Logo de IbaFex Tienda de Abarrotes en Línea"></a>
+    </div>
+    <div class="humberger__menu__cart">
+        <ul>
+            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+            <li><a href="{% url 'cart_detail' %}"><i class="fa fa-shopping-bag"></i> <span>{{ total_items }}</span></a></li>
+        </ul>
+    </div>
+    <div class="humberger__menu__widget">
+        <div class="header__top__right__language">
+            <img src="{% static "img/language-spanish.png" %}" class="img-lenguage" alt="">
+            <div>English</div>
+            <span class="arrow_carrot-down"></span>
+            <ul>
+                <li><a href="#">Español</a></li>
+                <li><a href="#">Ingles</a></li>
+            </ul>
+        </div>
+        <div class="header__top__right__auth">
+            {% if user.is_authenticated %}
+                <a class="saludar-usuario"> Hola, <span class="nombre-usuario"> {{ user.username }} </span> <button class= "boton-navegacion-logearse" onclick="exit()">
+                    Salir
+                </button> </a>
+                
+                
+                
+            {% else %}
+                <a href="{% url "login" %}"><i class="fa fa-user"></i>Inicia Sesión</a>
+            {% endif %}
+        </div>
+        
+    </div>
+    <nav class="humberger__menu__nav mobile-menu">
+        <ul>
+            <li class="active"><a href="{% url "home" %}">Inicio</a></li>
+            <li><a href="{% url "shop-grid" %}">Tienda</a></li>
+
+            {% comment %} <li><a href="#">Paginas</a>
+                <ul class="header__menu__dropdown">
+                    
+                    <li><a href="{% url "shoping-cart" %}">Carrito De Compras</a></li>
+                    <li><a href="{% url "checkout" %}">Finalizar Compra</a></li>
+                    <li><a href="{% url "blog-details" %}">Detalle Del Blog</a></li>
+                </ul>
+            </li>  {% endcomment %}
+
+            {% comment %} <li><a href="{% url "blog" %}">Blog</a></li> {% endcomment %}
+
+            <li><a href="{% url "contact" %}">Contacto</a></li>
+        </ul>
+    </nav>
+    <div id="mobile-menu-wrap"></div>
+    <div class="header__top__right__social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+    </div>
+    <div class="humberger__menu__contact">
+        <ul>
+            <li><i class="fa fa-envelope"></i>
+                {% if company_data != "No hay registro" %}
+                    <span>{{ company_data.email }}</span>
+                {% else %}
+                    <span>{{ company_data }}</span>
+                {% endif %}
+            </li>
+            <li>Productos 100% de Calidad</li>
+        </ul>
+    </div>
+</div>
+<!-- Humberger End -->
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__left">
+                        <ul>
+                            <li><i class="fa fa-envelope"></i>
+                                {% if company_data != "No hay registro"%}
+                                    <span>{{ company_data.email }}</span>
+                                {% else %}
+                                    <span>{{ company_data }}</span>
+                                {% endif %}
+                            </li>
+                            <li>Productos 100% de Calidad</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__right">
+                        <div class="header__top__right__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
+                        <div class="header__top__right__language">
+                            <img src="{% static "img/language-spanish.png" %}" class="img-lenguage" alt="">
+                            <div>Español</div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a href="#">Español</a></li>
+                                <li><a href="#">Ingles</a></li>
+                            </ul>
+                        </div>
+                        <div class="header__top__right__auth">
+                            
+                            {% if user.is_authenticated %}
+                                <a class="saludar-usuario"> Hola, 
+                                    <span class="nombre-usuario"> {{ user.username }} </span> 
+                                    <button onclick="exit()">Salir</button> 
+                                </a>
+                            {% else %}
+                                <a href="{% url "login" %}"><i class="fa fa-user"></i>Inicia Sesión</a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a href="{% url "home" %}"><img src="{% static "img/logo.png" %}" alt="Logo de IbaFex Tienda de Abarrotes en Línea"></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="{% url "home" %}">Inicio</a></li>
+                        <li><a href="{% url "shop-grid" %}">Tienda</a></li>
+
+                        {% comment %} <li><a href="#">Paginas</a>
+                            <ul class="header__menu__dropdown">
+                                <li><a href="{% url "shoping-cart" %}">Carrito de compras</a></li>
+                                <li><a href="{% url "checkout" %}">Finalizar compra</a></li>
+                                <li><a href="{% url "blog-details" %}">Detalle del Blog</a></li>
+                            </ul>
+                        </li> {% endcomment %}
+
+                        {% comment %} <li><a href="{% url "blog" %}">Blog</a></li> {% endcomment %}
+                        
+                        <li><a href="{% url "contact" %}">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__cart">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <li><a href="{% url 'cart_detail' %}"><i class="fa fa-shopping-bag"></i> <span>{{ total_items }}</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+<!-- Header Section End -->
+
+
+<!-- Hero Section Begin -->
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Mas Opciones</span>
+                    </div>
+                    <ul>
+                        <li><a href="#">Carne Fresca</a></li>
+                        <li><a href="#">Cereales</a></li>
+                        <li><a href="#">Chocolates</a></li>
+                        <li><a href="#">Bayas Frescas</a></li>
+                        <li><a href="#">Alimentos del Mar</a></li>
+                        <li><a href="#">Enlatados</a></li>
+                        <li><a href="#">Galletas</a></li>
+                        <li><a href="#">Leche</a></li>
+                        <li><a href="#">Papaya y Snacks</a></li>
+                        <li><a href="#">Avena</a></li>
+                        <li><a href="#">Plátanos Frescos</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="{% url "search_products" %}" method="GET">
+                            <div class="hero__search__categories">
+                                Categorias
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input type="text" placeholder="Buscar Productos" name="search">
+                            <button type="submit" class="site-btn">BUSCAR</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            {% if company_data != "No hay registro" %}
+                            <h5>+51 {{ company_data.phone }}</h5>
+                            {% else %}
+                            <h5>{{ company_data }}</h5>
+                            {% endif %}
+                            <span>Soporte 24/7</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__item set-bg" data-setbg="{% static "img/hero/banner1.png" %}">
+                    <div class="hero__text">
+                        <span>ABARROTE POR MAYOR</span>
+                        <h2>Productos<br/> de Alta Calidad</h2>
+                        <p>Envío rápido a todo Perú</p>
+                        <a href="#" class="primary-btn">COMPRA AHORA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+    <!-- Categories Section Begin -->
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                {% comment %} carrusel de prductos {% endcomment %}
+                <div class="categories__slider owl-carousel">
+                    {% for product in random_products %}
+                        <div class="col-lg-3">
+                            <div class="categories__item set-bg" data-setbg="{{ product.image.url }}">
+                                <h5><a href="{% url "shop-details" product.id %}">{{ product.name }}</a>
+                                </h5>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="col-lg-3">
+                            <div class="categories__item set-bg" data-setbg="{% static "img/imagen-vacia.jpg" %}">
+                                <h5><a href="#">Producto</a>
+                                </h5>
+                            </div>
+                        </div>
+                        
+                    {% endfor %}
+                </div>
+                {% comment %} carrusel de prductos {% endcomment %}
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Productos Destacados</h2>
+                    </div>
+                    <div class="featured__controls">
+                        <ul>
+                            <li class="active" data-filter="*">Todo</li>
+                            <li data-filter=".oranges">Oranges</li>
+                            <li data-filter=".fresh-meat">Fresh Meat</li>
+                            <li data-filter=".vegetables">Vegetables</li>
+                            <li data-filter=".fastfood">Fastfood</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row featured__filter">
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-1.jpg" %}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>S/30.00</h5>
+                        </div>
+                    </div>
+                </div>
+
+                {% comment %} {% for  in  %}
+                
+                
+                
+                {% endfor %} {% endcomment %}
+                {% comment %} <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-2.jpg" %}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>S/30.00</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-3.jpg" %}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>S/30.00</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-4.jpg" %}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>S/30.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-5.jpg" %}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>S/30.00</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-6.jpg" %}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>S/30.00</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-7.jpg" %}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>S/30.00</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-8.jpg" %}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>S/30.00</h5>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+
+            </div>
+        </div>
+    </section>
+    <!-- Featured Section End -->
+
+    <!-- Latest Product Section Begin -->
+    <section class="latest-product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+
+                        <h4>Ultimos Productos</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                {% if latest_products %}
+                                    {% for product in latest_products %}
+                                        <a href="{% url 'shop-details' product.id %}" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                {% if product.price_discount > 0 %}
+                                                    <div class="product__discount__item__cutomer">
+                                                        <h6>{{ product.name }}</h6>
+                                                        <div class="product__item__price">S/{{ product.price_discount }} <span>{{ product.price }}</span></div>
+                                                    </div>
+                                                {% else %}
+                                                    <h6>{{ product.name }}</h6>
+                                                    <span>S/{{ product.price }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                {% else %}
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{% static "img/imagen-vacia.jpg" %}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Producto</h6>
+                                            <span>sin precio</span>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                {% if latest_products %}
+                                    {% for product in latest_products %}
+                                        <a href="{% url 'shop-details' product.id %}" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                {% if product.price_discount > 0 %}
+                                                    <div class="product__discount__item__cutomer">
+                                                        <h6>{{ product.name }}</h6>
+                                                        <div class="product__item__price">S/{{ product.price_discount }} <span>{{ product.price }}</span></div>
+                                                    </div>
+                                                {% else %}
+                                                    <h6>{{ product.name }}</h6>
+                                                    <span>S/{{ product.price }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                {% else %}
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{% static "img/imagen-vacia.jpg" %}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>Producto</h6>
+                                            <span>sin precio</span>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Mejor Valorados</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                {% if top_rated_products %}
+                                    {% for product in top_rated_products %}
+                                        <a href="{% url 'shop-details' product.id %}" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                {% if product.price_discount > 0 %}
+                                                    <div class="product__discount__item__cutomer">
+                                                        <h6>{{ product.name }}</h6>
+                                                        <div class="product__item__price">S/{{ product.price_discount }} <span>{{ product.price }}</span></div>
+                                                    </div>
+                                                {% else %}
+                                                    <h6>{{ product.name }}</h6>
+                                                    <span>S/{{ product.price }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                {% else %}
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{% static "img/imagen-vacia.jpg" %}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>No hay productos</h6>
+                                            <span>sin precio</span>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                {% if top_rated_products %}
+                                    {% for product in top_rated_products %}
+                                        <a href="{% url 'shop-details' product.id %}" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                {% if product.price_discount > 0 %}
+                                                    <div class="product__discount__item__cutomer">
+                                                        <h6>{{ product.name }}</h6>
+                                                        <div class="product__item__price">S/{{ product.price_discount }} <span>{{ product.price }}</span></div>
+                                                    </div>
+                                                {% else %}
+                                                    <h6>{{ product.name }}</h6>
+                                                    <span>S/{{ product.price }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                {% else %}
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{% static "img/imagen-vacia.jpg" %}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>No hay prodcutos</h6>
+                                            <span>sin precio</span>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Primeros Productos</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item">
+                                {% if first_products %}
+                                    {% for product in first_products %}
+                                        <a href="{% url 'shop-details' product.id %}" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                {% if product.price_discount > 0 %}
+                                                    <div class="product__discount__item__cutomer">
+                                                        <h6>{{ product.name }}</h6>
+                                                        <div class="product__item__price">S/{{ product.price_discount }} <span>{{ product.price }}</span></div>
+                                                    </div>
+                                                {% else %}
+                                                    <h6>{{ product.name }}</h6>
+                                                    <span>S/{{ product.price }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                {% else %}
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{% static "img/imagen-vacia.jpg" %}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>No hay prodcutos</h6>
+                                            <span>sin precio</span>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <div class="latest-prdouct__slider__item">
+                                {% if first_products %}
+                                    {% for product in first_products %}
+                                        <a href="{% url 'shop-details' product.id %}" class="latest-product__item">
+                                            <div class="latest-product__item__pic">
+                                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                {% if product.price_discount > 0 %}
+                                                    <div class="product__discount__item__cutomer">
+                                                        <h6>{{ product.name }}</h6>
+                                                        <div class="product__item__price">S/{{ product.price_discount }} <span>{{ product.price }}</span></div>
+                                                    </div>
+                                                {% else %}
+                                                    <h6>{{ product.name }}</h6>
+                                                    <span>S/{{ product.price }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                {% else %}
+                                    <a href="#" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{% static "img/imagen-vacia.jpg" %}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>No hay prodcutos</h6>
+                                            <span>sin precio</span>
+                                        </div>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Latest Product Section End -->
+
+    <!-- Blog Section Begin -->
+
+    {% comment %} <section class="from-blog spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title from-blog__title">
+                        <h2>From The Blog</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="{% static "img/blog/blog-1.jpg" %}" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> Mayo 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="{% static "img/blog/blog-2.jpg" %}" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="{% static "img/blog/blog-3.jpg" %}" alt="">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
+                                <li><i class="fa fa-comment-o"></i> 5</li>
+                            </ul>
+                            <h5><a href="#">Visit the clean farm in the US</a></h5>
+                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+    <a href="https://wa.me/51982966410" class="btn-wsp" target="_blank">
+	    <i class="fa fa-whatsapp icono"></i>
+    </a>
+    <!-- Blog Section End -->
+
+    {% comment %} START FOOTER {% endcomment %}
+    {% include "footer.html" %}
+    {% comment %} END FOOTER {% endcomment %}
+
+    {% comment %} START JS {% endcomment %}
+    {% include "js-plugins.html" %}
+    {% comment %} END JS {% endcomment %}
+    
+</body>
+
+</html>

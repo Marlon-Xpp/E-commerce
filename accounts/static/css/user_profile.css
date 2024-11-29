@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+}
+
+body{
+    background-color: #f5f1f1;
+
+}
+
+.imagen-propia{
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+
+.container {
+    max-width: 450px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Imagen de perfil */
+.profile-image {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #28a745;
+}
+
+#change-picture {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#change-picture:hover {
+    background-color: #0056b3;
+}
+
+/* Información del usuario */
+.user-info {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    padding: 10px 0;
+}
+.info-item p{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    
+}
+
+
+/* Mantener el mismo ancho para los spans e inputs */
+.info-item span, 
+.info-item input {
+    width: 100%; 
+    max-width: 300px;
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+.span-input{
+    border: 1px solid transparent;
+}
+
+/* Estilo inicial del input, pero con borde transparente */
+.info-item input {
+    border: 1px solid transparent;
+    background-color: transparent;
+    padding: 5px 0;
+}
+
+
+hr {
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Botón Editar Perfil */
+.edit-profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#edit-profile {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#edit-profile:hover {
+    background-color: #218838;
+}
+
+/* Verificación de contraseña */
+.password-verification {
+    margin-top: 20px;
+    text-align: center;
+    padding: 0px 20px;
+
+}
+
+.password-verification label {
+    display: block;
+
+    margin-bottom: 10px;
+    color: #555;
+}
+
+input[type="password"] {
+    padding: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="password"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Detalles adicionales */
+.additional-info {
+    margin-top: 30px;
+    display: none;
+    padding: 20px;
+    background-color: #f1f3f5;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.additional-info h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #007BFF;
+}
+
+.additional-info p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+}
+

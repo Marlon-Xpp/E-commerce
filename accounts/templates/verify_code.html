@@ -1,0 +1,75 @@
+
+    {% comment %} FATA DARLE ESTILOS CON CSS {% endcomment %}
+    <!-- Modal de Verificación -->
+    <div id="verificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Verificación de Código</h2>
+            <p>Introduce el código de verificación que recibiste en el correo electrónico: {{ email }} </p>
+            <input type="text" id="verificationCode" class="input-code" placeholder="Código de verificación" required>
+            <button id="verifyBtn" class="btn-verify">Verificar</button>
+        </div>
+    </div>
+   
+
+    <!-- JavaScript para control del modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById("verificationModal");
+            const span = document.getElementsByClassName("close-btn")[0];
+            const verifyBtn = document.getElementById("verifyBtn");
+
+            // Función para abrir el modal después del registro exitoso
+            function openVerificationModal() {
+                modal.style.display = "block";
+            }
+
+            // Simulación: Abrir el modal después de una respuesta exitosa
+            if ("{{ messages }}" && "{{ messages }}" !== "") {
+                // Si existe un mensaje indicando el envío de código, abrimos el modal
+                openVerificationModal();
+            }
+
+            // Cerrar el modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // Cerrar modal al hacer clic fuera del contenido
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Verificación del código ingresado
+            verifyBtn.onclick = function() {
+                const code = document.getElementById("verificationCode").value;
+            
+                // Realizar la solicitud al servidor para verificar el código
+                fetch("{% url 'verify_code' %}", {
+                    method: 'POST', // Debe ser 'POST'
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}', // Asegúrate de que el token CSRF sea válido
+                    },
+                    body: JSON.stringify({
+                        'verification_code': code,
+                        'email': '{{ request.session.email }}'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Redirigir al login si la verificación es exitosa
+                        window.location.href = "{% url 'login' %}";
+                    } else {
+                        alert("Código incorrecto. Por favor, inténtalo de nuevo.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error en la verificación:", error);
+                });
+            }
+        });
+    </script>

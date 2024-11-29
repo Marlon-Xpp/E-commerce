@@ -1,0 +1,76 @@
+{% load static %}
+<!-- Footer Section Begin -->
+<footer class="footer spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="footer__about">
+                    <div class="footer__about__logo">
+                        <a href="{% url "home" %}"><img src="{% static "img/logo.png" %}" alt=""></a>
+                    </div>
+                    <ul>
+                        
+                        <li>Direccion: {% if company_data != "No hay registro" %} {{ company_data.location }} {% else %} {{ company_data }} {% endif %} </li>
+                        <li>Celular: {% if company_data != "No hay registro" %}  {{ company_data.phone }} {% else %} {{ company_data }} {% endif %}</li>
+                        <li>Correo: {% if company_data != "No hay registro" %} {{ company_data.email }} {% else %} {{ company_data }} {% endif %} </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                <div class="footer__widget">
+                    <h6>Enlaces Útiles</h6>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Acerca de Nuestra Tienda</a></li>
+                        <li><a href="#">Compras Seguras</a></li>
+                        <li><a href="#">Información de Entrega</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Nuestro Mapa del Sitio</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">Quiénes Somos</a></li>
+                        <li><a href="#">Nuestros Servicios</a></li>
+                        <li><a href="#">Proyectos</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Innovación</a></li>
+                        <li><a href="#">Testimonios</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="footer__widget">
+                    <h6>Únete a Nuestro Boletín Ahora</h6>
+                    <p>Recibe actualizaciones por correo electrónico sobre nuestra tienda y ofertas especiales.</p>
+                    <form action="#">
+                        <input type="text" placeholder="Ingrese Su Correo">
+                        <button type="submit" class="site-btn">Suscribirse</button>
+                    </form>
+                    <div class="footer__widget__social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer__copyright">
+                    <div class="footer__copyright__text">
+                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | La tienda virtual es hecho por <a href="https://github.com/Marlon-Xpp" target="_blank">Marlon Smith Pillaca Pullo</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p></div>
+                    <div class="footer__copyright__payment"><img src="{% static "img/payment-item.png" %}" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+<script>
+    function exit() {
+        window.location.href = "{% url "exit" %}";
+    } 
+</script>

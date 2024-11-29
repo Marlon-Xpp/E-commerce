@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup  Page</title>
+    {% load static  %}
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "css/verify_code.css" %}">
+    
+
+</head>
+<body>
+    
+
+    <main class="contenedor-centrado">
+        <div class="menu-principal">
+
+            <section class="seccion-formulario">
+                <h2 class="texto-principal">
+                    Crear tu cuenta
+                </h2>
+
+                {% comment %} mensaje de error {% endcomment %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <div class="mensaje-alerta">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                {% comment %} termina el mensaje de error {% endcomment %}
+
+                <form action="" method="POST" class="formulario">
+                    {% csrf_token %}
+                    <input class="entrada" type="text" id="names" name="names" placeholder="Nombres" required>
+                    <input class="entrada" type="text" id="lastname" name="lastname" placeholder="Apellidos" required>
+                    <input class="entrada" type="text" id="username" name="username" placeholder="Username" required>
+
+                    <input class="entrada" type="email" id="email" name="email" placeholder="Correo electronico" required>
+                    <input class="entrada" type="password" id="password" name="password" placeholder="Contraseña" required>
+                    
+                    <button type="submit" class="boton-iniciar-sesion">CREAR TU CUENTA</button>
+                </form>
+                
+            </section>
+
+        <section class="seccion-otros-accesos">
+            <span class="consulta-otros-accesos">
+                Tambien puedes acceder con:
+            </span>
+            <button class="boton-google">
+                CONTINUAR CON GOOGLE
+            </button>
+            <button class="boton-facebook">
+                CONTINUAR CON FACEBOOK
+            </button>
+        </section>
+
+            <section class="seccion-crear-cuenta">
+                <span  class="pregunta-crear-cuenta">
+                    ¿Tienes una cuenta?
+                </span>
+                
+                <button class="boton-crear-cuenta" onclick="redirectLogin()">
+                    INICIA SESION
+                </button>
+            </section>
+        </div>
+        
+    </main>
+
+    {% comment %} incluimos el archivo verify_code.html que es un modal {% endcomment %}
+    {% if verification_sent %}  {% comment %} hacemos una condicion de q si verification_set es true  {% endcomment %}
+        {% comment %} entonces muestrame lo q hay en verify_code.html {% endcomment %}
+        {% include "verify_code.html" %} 
+    {% endif %}
+
+    <script>
+        function redirectLogin() {
+            window.location.href = "{% url "login" %}";
+        }
+    
+        function redirectSignup() {
+            window.location.href = "{% url "signup" %}";
+        }
+    
+        {% comment %} function exit() {
+            window.location.href = "{% url "exit" %}";
+        } {% endcomment %}
+    </script>
+
+</body>
+
+</html>
