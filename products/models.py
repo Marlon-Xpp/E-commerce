@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from decimal import Decimal
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
 
 class Product(models.Model):
     

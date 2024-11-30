@@ -4,6 +4,10 @@ import random
 from django.core.mail import send_mail
 from ecommers import settings
 from django.contrib.auth import logout
+
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+
 from products.models import Product, Cart, CartItem
 # from products.views import get_products_id
 # Create your views here.
@@ -52,8 +56,7 @@ def home(request):
     first_products = Product.objects.order_by("date_added")[:3]
     # Obtener los 3 productos con más likes (mejores valorados)
     top_rated_products = Product.objects.order_by("-likes")[:3]
-
-
+    
     if request.user.is_authenticated:
         # Si el usuario está autenticado, obtenemos o creamos el carrito
         cart, created = Cart.objects.get_or_create(user=request.user)
@@ -63,7 +66,11 @@ def home(request):
         # Si el usuario no está autenticado, no se crea un carrito, solo asignamos 0 productos
         cart = None  # No hay carrito para usuarios no autenticados
         total_items = 0  # Por defecto, el total de productos es 0
-
+        
+        
+    # Contar el número de productos que el usuario ha marcado como favoritos
+    favorite_products_count = Product.objects.filter(liked_by=request.user).count() if request.user.is_authenticated else 0  
+    print(f"obtuvo esto: {favorite_products_count}")
     
     return render(request, "index.html", 
                 {"random_products": random_products,
@@ -74,6 +81,7 @@ def home(request):
                 # "product": get_products_id(product_id)
                 "cart": cart,
                 "total_items":total_items,
+                "favorite_products_count":favorite_products_count,
                 })
 
 
@@ -81,7 +89,26 @@ def home(request):
 
 def blog_details(request):
     company_data = get_company_data()  # Llama a la función para obtener los datos
-    return render(request, "blog-details.html", {"company_data": company_data})
+    if request.user.is_authenticated:
+        # Si el usuario está autenticado, obtenemos o creamos el carrito
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        # Contar el número total de productos en el carrito
+        total_items = sum(item.quantity for item in cart.items.all())
+    else:
+        # Si el usuario no está autenticado, no se crea un carrito, solo asignamos 0 productos
+        cart = None  # No hay carrito para usuarios no autenticados
+        total_items = 0  # Por defecto, el total de productos es 0
+        
+    # Contar el número de productos que el usuario ha marcado como favoritos
+    favorite_products_count = Product.objects.filter(liked_by=request.user).count() if request.user.is_authenticated else 0  
+    print(f"obtuvo esto: {favorite_products_count}")
+    
+    return render(request, "blog-details.html", 
+                {"company_data": company_data, 
+                "cart": cart,
+                "total_items":total_items,
+                "favorite_products_count":favorite_products_count,
+                })
 
 def blog(request):
     company_data = get_company_data()  # Llama a la función para obtener los datos
@@ -108,6 +135,9 @@ def contact(request):
         cart = None  # No hay carrito para usuarios no autenticados
         total_items = 0  # Por defecto, el total de productos es 0
 
+    # Contar el número de productos que el usuario ha marcado como favoritos
+    favorite_products_count = Product.objects.filter(liked_by=request.user).count() if request.user.is_authenticated else 0  
+    print(f"obtuvo esto: {favorite_products_count}")
     
     if request.method == "POST":
         
@@ -129,6 +159,7 @@ def contact(request):
             "company_data": company_data,
             "cart": cart,
             "total_items":total_items,
+            "favorite_products_count":favorite_products_count,
             })
 
 
@@ -206,7 +237,9 @@ def search_products(request):
         cart = None  # No hay carrito para usuarios no autenticados
         total_items = 0  # Por defecto, el total de productos es 0
 
-    
+    # Contar el número de productos que el usuario ha marcado como favoritos
+    favorite_products_count = Product.objects.filter(liked_by=request.user).count() if request.user.is_authenticated else 0  
+    print(f"obtuvo esto: {favorite_products_count}")
     
     print(f"buscaste: {query}")
     
@@ -227,8 +260,32 @@ def search_products(request):
         
         "cart": cart,
         "total_items":total_items,
+        "favorite_products_count":favorite_products_count,
         })
 
+
+
+
+def toggle_like(request, product_id):
+    if not request.user.is_authenticated:
+        return JsonResponse({'error': 'Debes iniciar sesión para dar Me Gusta.'}, status=403)
+
+    product = get_object_or_404(Product, id=product_id)
+    user = request.user
+
+    if user in product.liked_by.all():
+        # Si ya dio like, quitar el like
+        product.liked_by.remove(user)
+        product.likes = max(0, product.likes - 1)
+        liked = False
+    else:
+        # Si no ha dado like, añadirlo
+        product.liked_by.add(user)
+        product.likes += 1
+        liked = True
+
+    product.save()
+    return JsonResponse({'liked': liked, 'likes': product.likes})
 
     
     

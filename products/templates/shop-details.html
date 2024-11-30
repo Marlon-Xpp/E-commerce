@@ -88,7 +88,12 @@
                             
                         {% comment %} <a href="{% url "shoping-cart" product.id %}" class="primary-btn" name="cart_item">AÑADIR AL CARRITO</a> {% endcomment %}
                         <a href="{% url 'add_to_cart' product.id %}" class="primary-btn" name="cart_item">AÑADIR AL CARRITO</a>
-                        <button class="heart-icon" name="favorite"><span class="icon_heart_alt"></span></button>
+
+                        <!-- Botón de like -->
+                        <button class="like-btn" data-product-id="{{ product.id }}">
+                            <i class="fa fa-heart {% if request.user in product.liked_by.all %}liked{% endif %}"></i>
+                            <span class="like-count">{{ product.likes }}</span>
+                        </button>
 
                         <ul>
                             <li>
@@ -293,7 +298,31 @@
     {% comment %} START JS {% endcomment %}
     {% include "js-plugins.html" %}
     {% comment %} END JS {% endcomment %}
-
+    <script>
+        document.querySelectorAll('.like-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                fetch(`/toggle-like/${productId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.liked !== undefined) {
+                        const likeIcon = this.querySelector('i');
+                        const likeCount = this.querySelector('.like-count');
+                        likeIcon.classList.toggle('liked', data.liked);
+                        likeCount.textContent = data.likes;
+                    } else if (data.error) {
+                        alert(data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+    </script>
 
 </body>
 

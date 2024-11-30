@@ -30,12 +30,16 @@ def shop_details(request, product_id):
         cart = None  # No hay carrito para usuarios no autenticados
         total_items = 0  # Por defecto, el total de productos es 0
 
+    # Contar el número de productos que el usuario ha marcado como favoritos
+    favorite_products_count = Product.objects.filter(liked_by=request.user).count() if request.user.is_authenticated else 0  
+    print(f"obtuvo esto: {favorite_products_count}")
     
     return render(request, "shop-details.html", {
         "product": get_products_id(product_id),
         "company_data": get_company_data(),
         "cart": cart,
         "total_items":total_items,
+        "favorite_products_count":favorite_products_count,
     })
 
 def shoping_cart(request, product_id):
@@ -90,6 +94,9 @@ def shop_grid(request):
         cart = None  # No hay carrito para usuarios no autenticados
         total_items = 0  # Por defecto, el total de productos es 0
 
+    # Contar el número de productos que el usuario ha marcado como favoritos
+    favorite_products_count = Product.objects.filter(liked_by=request.user).count() if request.user.is_authenticated else 0  
+    print(f"obtuvo esto: {favorite_products_count}")
     
     return render(request, "shop-grid.html", {
         "products": products,
@@ -103,6 +110,7 @@ def shop_grid(request):
         "get_category":get_category,
         "cart": cart,
         "total_items":total_items,
+        "favorite_products_count":favorite_products_count,
     })
 
 
@@ -140,6 +148,9 @@ def products_by_category(request, category):
         cart = None  # No hay carrito para usuarios no autenticados
         total_items = 0  # Por defecto, el total de productos es 0
 
+    # Contar el número de productos que el usuario ha marcado como favoritos
+    favorite_products_count = Product.objects.filter(liked_by=request.user).count() if request.user.is_authenticated else 0  
+    print(f"obtuvo esto: {favorite_products_count}")
     
     # Pasar los productos y el estado al contexto
     return render(request, 'shop-grid.html', {
@@ -156,6 +167,7 @@ def products_by_category(request, category):
         "selected_category": category,
         "cart": cart,
         "total_items":total_items,
+        "favorite_products_count":favorite_products_count,
     })
     
 
@@ -200,8 +212,13 @@ def cart_detail(request):
     # Contar el número total de productos en el carrito
     total_items = sum(item.quantity for item in cart.items.all())
     
+    # Contar el número de productos que el usuario ha marcado como favoritos
+    favorite_products_count = Product.objects.filter(liked_by=request.user).count() if request.user.is_authenticated else 0  
+    print(f"obtuvo esto: {favorite_products_count}")
+    
     return render(request, 'shoping-cart.html', 
                 {'cart': cart, 
                 "company_data": get_company_data(),
-                'total_items': total_items
+                'total_items': total_items,
+                "favorite_products_count":favorite_products_count,
                 })

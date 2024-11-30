@@ -159,8 +159,8 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>2</span></a></li>
-                        {% comment %} <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li> {% endcomment %}
+                        <li><a href="#"><i class="fa fa-heart"></i> <span>{{ favorite_products_count }}</span></a></li>
+                        
                         <li><a href="{% url 'cart_detail' %}"><i class="fa fa-shopping-bag"></i> <span>{{ total_items }}</span></a></li>
                         
                     </ul>
