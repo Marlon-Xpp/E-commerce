@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .details {
+            margin-bottom: 20px;
+        }
+        .details p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .items {
+            margin-top: 20px;
+        }
+        .items table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .items th, .items td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .items th {
+            background-color: #f1f1f1;
+        }
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+
+
+</head>
+<body>
+    <h1>Detalles del Pago</h1>
+
+    <h2>Comprador</h2>
+    <p><strong>Nombre:</strong> {{ payment_details.payer.first_name }} {{ payment_details.payer.last_name }}</p>
+    <p><strong>Email:</strong> {{ payment_details.payer.email }}</p>
+    <p><strong>Identificación:</strong> {{ payment_details.payer.identification.number }}</p>
+    
+    <h2>Productos</h2>
+    {% if payment_details.items %}
+        <ul>
+            {% for item in payment_details.additional_info.items %}
+                <li>
+                    <strong>Producto:</strong> {{ item.title }}<br>
+                    <strong>Cantidad:</strong> {{ item.quantity }}<br>
+                    <strong>Precio Unitario:</strong> S/{{ item.unit_price }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay productos en esta transacción.</p>
+    {% endif %}
+
+    <h2>Resumen de la Transacción</h2>
+    <p><strong>Total de la Transacción:</strong> S/{{ payment_details.transaction_amount }}</p>
+    <p><strong>Fecha de Aprobación:</strong> {{ payment_details.date_approved }}</p>
+
+    
+    <h1> {{payment_details.}}Pago Exitoso</h1>
+    <a href="home/">Regresar al Inicio</a>
+
+</body>
+</html>

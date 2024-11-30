@@ -5,7 +5,7 @@ from products import views
 urlpatterns = [
     
     path("shop-details/<int:product_id>/", views.shop_details , name="shop-details"),
-    path("shoping-cart/<int:product_id>/", views.shoping_cart , name="shoping-cart"),
+    # path("shoping-cart/<int:product_id>/", views.shoping_cart , name="shoping-cart"),
     path("shop-grid/", views.shop_grid , name="shop-grid"),
     
     path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),

@@ -42,23 +42,23 @@ def shop_details(request, product_id):
         "favorite_products_count":favorite_products_count,
     })
 
-def shoping_cart(request, product_id):
+# def shoping_cart(request, product_id):
     
-    # # Paso 1: Obtener el producto por ID
-    # products = get_object_or_404(Product, id=product_id)
+#     # # Paso 1: Obtener el producto por ID
+#     # products = get_object_or_404(Product, id=product_id)
     
-    # # Paso 2: Capturar la información del producto
-    # product_name = products.name
-    # product_img = products.image
-    # product_price = products.price
+#     # # Paso 2: Capturar la información del producto
+#     # product_name = products.name
+#     # product_img = products.image
+#     # product_price = products.price
     
-    # # Debug: mostrar la información del producto y el carrito
-    # print(f"Producto añadido: {product_name}, {product_img}, {product_price}")
+#     # # Debug: mostrar la información del producto y el carrito
+#     # print(f"Producto añadido: {product_name}, {product_img}, {product_price}")
     
-    return render(request, "shoping-cart.html",{
-        # "products": products,  # Pasar todos los productos en el carrito
-        "company_data": get_company_data(),
-    })
+#     return render(request, "shoping-cart.html",{
+#         # "products": products,  # Pasar todos los productos en el carrito
+#         "company_data": get_company_data(),
+#     })
 
 
 
@@ -207,11 +207,10 @@ def update_cart_item(request, item_id):
 
 @login_required
 def cart_detail(request):
-    cart, created = Cart.objects.get_or_create(user=request.user)
     
+    cart, created = Cart.objects.get_or_create(user=request.user)
     # Contar el número total de productos en el carrito
     total_items = sum(item.quantity for item in cart.items.all())
-    
     # Contar el número de productos que el usuario ha marcado como favoritos
     favorite_products_count = Product.objects.filter(liked_by=request.user).count() if request.user.is_authenticated else 0  
     print(f"obtuvo esto: {favorite_products_count}")
