@@ -20,9 +20,16 @@ def shop_details(request, product_id):
     #     quantity = request.POST.get("quantity", 1)
     #     print(f"cantidad: {quantity}")
         
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    # Contar el número total de productos en el carrito
-    total_items = sum(item.quantity for item in cart.items.all())
+    if request.user.is_authenticated:
+        # Si el usuario está autenticado, obtenemos o creamos el carrito
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        # Contar el número total de productos en el carrito
+        total_items = sum(item.quantity for item in cart.items.all())
+    else:
+        # Si el usuario no está autenticado, no se crea un carrito, solo asignamos 0 productos
+        cart = None  # No hay carrito para usuarios no autenticados
+        total_items = 0  # Por defecto, el total de productos es 0
+
     
     return render(request, "shop-details.html", {
         "product": get_products_id(product_id),
@@ -73,9 +80,16 @@ def shop_grid(request):
     more_sale = Product.objects.order_by("-sales")[:3]
     
     
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    # Contar el número total de productos en el carrito
-    total_items = sum(item.quantity for item in cart.items.all())
+    if request.user.is_authenticated:
+        # Si el usuario está autenticado, obtenemos o creamos el carrito
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        # Contar el número total de productos en el carrito
+        total_items = sum(item.quantity for item in cart.items.all())
+    else:
+        # Si el usuario no está autenticado, no se crea un carrito, solo asignamos 0 productos
+        cart = None  # No hay carrito para usuarios no autenticados
+        total_items = 0  # Por defecto, el total de productos es 0
+
     
     return render(request, "shop-grid.html", {
         "products": products,
@@ -116,9 +130,16 @@ def products_by_category(request, category):
     products = Product.objects.filter(category=category)
     
     
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    # Contar el número total de productos en el carrito
-    total_items = sum(item.quantity for item in cart.items.all())
+    if request.user.is_authenticated:
+        # Si el usuario está autenticado, obtenemos o creamos el carrito
+        cart, created = Cart.objects.get_or_create(user=request.user)
+        # Contar el número total de productos en el carrito
+        total_items = sum(item.quantity for item in cart.items.all())
+    else:
+        # Si el usuario no está autenticado, no se crea un carrito, solo asignamos 0 productos
+        cart = None  # No hay carrito para usuarios no autenticados
+        total_items = 0  # Por defecto, el total de productos es 0
+
     
     # Pasar los productos y el estado al contexto
     return render(request, 'shop-grid.html', {

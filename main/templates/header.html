@@ -51,7 +51,7 @@
                 </ul>
             </li> {% endcomment %}
 
-            {% comment %} <li><a href="{% url "blog" %}">Blog</a></li> {% endcomment %}
+            <li><a href="{% url "blog" %}">Nosotros</a></li>
 
             <li><a href="{% url "contact" %}">Contacto</a></li>
         </ul>
@@ -150,7 +150,7 @@
                             </ul>
                         </li>  {% endcomment %}
 
-                        <li><a href="{% url "blog-details" %}">Blog</a></li>
+                        <li><a href="{% url "blog-details" %}">Nosotros</a></li>
                         
                         <li><a href="{% url "contact" %}">Contacto</a></li>
                     </ul>
@@ -162,6 +162,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i> <span>2</span></a></li>
                         {% comment %} <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li> {% endcomment %}
                         <li><a href="{% url 'cart_detail' %}"><i class="fa fa-shopping-bag"></i> <span>{{ total_items }}</span></a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -173,64 +174,5 @@
 </header>
 <!-- Header Section End -->
 
-<!-- Hero Section Begin -->
-<section class="hero hero-normal">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="hero__categories">
-                    <div class="hero__categories__all">
-                        <i class="fa fa-bars"></i>
-                        <span>Mas Opciones</span>
-                    </div>
-                    <ul>
-                        <li><a href="#">Carne Fresca</a></li>
-                        <li><a href="#">Verduras</a></li>
-                        <li><a href="#">Regalos de Frutas y Nueces</a></li>
-                        <li><a href="#">Bayas Frescas</a></li>
-                        <li><a href="#">Alimentos del Mar</a></li>
-                        <li><a href="#">Mantequilla y Huevos</a></li>
-                        <li><a href="#">Comida Rápida</a></li>
-                        <li><a href="#">Cebolla Fresca</a></li>
-                        <li><a href="#">Papaya y Snacks</a></li>
-                        <li><a href="#">Avena</a></li>
-                        <li><a href="#">Plátanos Frescos</a></li>
 
-                        
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="{% url 'search_products' %}" method="GET">
-                            
-                            <div class="hero__search__categories">
-                                Categorias
-                                <span class="arrow_carrot-down"></span>
-                            </div>
-
-                            <input type="text" placeholder="Buscar Productos" name="search">
-                            <button type="submit" class="site-btn">BUSCAR</button>
-                        </form>
-                    </div>
-                    <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                            {% if company_data != "No hay registro" %}
-                            <h5>+51 {{ company_data.phone }}</h5>
-                            {% else %}
-                            <h5>{{ company_data }}</h5>
-                            {% endif %}
-                            <span>Soporte 24/7</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Hero Section End -->
 

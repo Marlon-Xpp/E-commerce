@@ -74,3 +74,13 @@
         window.location.href = "{% url "exit" %}";
     } 
 </script>
+
+<script>
+    document.querySelector('a[href^="#"]').addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetId = this.getAttribute("href");
+        document.querySelector(targetId).scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+</script>

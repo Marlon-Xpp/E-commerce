@@ -22,7 +22,10 @@ class Product(models.Model):
     
     OPTION_CATEGORY =  [
         ('Leche', 'Leche'),
-        ('Chocolate', 'Chocolate'),
+        ('Aceites', 'Aceites'),
+        ('Chocolates', 'Chocolates'),
+        ('Frijoles', 'Frijoles'),
+        ('Higiene Dental', 'Higiene Dental'),
         ('Fórmulas Infantiles', 'Fórmulas Infantiles'),
         ('Dulces', 'Dulces'),
         ('Galleta', 'Galleta'),

@@ -18,20 +18,20 @@
     {% comment %} START HEADER {% endcomment %}
     {% include "header.html" %}
     {% comment %} END HEADER {% endcomment %}
-
+    {% include "block-content.html" %}
     
 
     <!-- Blog Details Hero Begin -->
-    <section class="blog-details-hero set-bg" data-setbg="{% static "img/blog/details/details-hero.jpg" %}">
+    <section id="section-blog-details" class="blog-details-hero set-bg" data-setbg="{% static "img/blog/details/details-hero.jpg" %}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="blog__details__hero__text">
                         <h2>Sobre Nosotros</h2>
                         <ul>
-                            <li>By Michael Scofield</li>
-                            <li>January 14, 2019</li>
-                            <li>8 Comments</li>
+                            <li>Empresa</li>
+                            <li>Corporacion</li>
+                            <li>IBAFEX</li>
                         </ul>
                     </div>
                 </div>
@@ -41,17 +41,17 @@
     <!-- Blog Details Hero End -->
 
     <!-- Blog Details Section Begin -->
-    <section class="blog-details spad">
+    <section id="section-quienes-somos" class="blog-details spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5 order-md-1 order-2">
                     <div class="blog__sidebar">
-                        <div class="blog__sidebar__search">
+                        {% comment %} <div class="blog__sidebar__search">
                             <form action="{% url 'search_products' %}" method="GET">
                                 <input type="text" placeholder="Buscar...">
                                 <button type="submit"><span class="icon_search"></span></button>
                             </form>
-                        </div>
+                        </div> {% endcomment %}
                         {% comment %} <div class="blog__sidebar__item">
                             <h4>Categories</h4>
                             <ul>
@@ -145,14 +145,13 @@
                         <img src="img/blog/details/details-pic.jpg" alt="">
 
                         <h3>MISION</h3>
-
-                        <p>Somos la empresa IBAFEX, que ofrece productos nacionales e importados y con marca propia “Miresur” en el rubro alimenticio con el fin de expandirse a nivel nacional e internacional, ofreciendo productos de calidad,  atendiendo a las necesidades del medio ambiente y de la sociedad.</p>
+                        <p>{{ company_data.mission }}</p>
                         
                         <h3>VISION</h3>
-
-                        <p>Al año 2028 queremos ser la primera opción de nuestros clientes, siendo reconocidos y líderes por nuestra calidad en el rubro alimentario, con colaboradores completamente dedicados a su trabajo y capaces de desarrollar sus habilidades de forma eficaz y eficiente, buscando el bien común en la sociedad y promoviendo la alimentación de tal manera que se logre una alta rentabilidad para la empresa.</p>
+                        <p>{{ company_data.vision }}</p>
                         <br>
-                        <h3>GERENTES</h3>
+
+                        <h3 id="gerentes">GERENTES</h3>
                         
                     </div>
                     {% comment %} STAKEHOLDERS DE LA EMPRESA  {% endcomment %}
@@ -287,7 +286,7 @@
     <!-- Blog Details Section End -->
 
     <!-- Related Blog Section Begin -->
-    <section class="related-blog spad">
+    {% comment %} <section class="related-blog spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -344,7 +343,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> {% endcomment %}
     <!-- Related Blog Section End -->
 
     {% comment %} START FOOTER {% endcomment %}

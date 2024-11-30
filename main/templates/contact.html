@@ -18,13 +18,14 @@
     {% comment %} START HEADER {% endcomment %}
     {% include "header.html" %}
     {% comment %} END HEADER {% endcomment %}
-
-    <!-- Hero Image Block (definido para ser sobreescrito en index.html) -->
+    {% include "block-content.html" %}
+    
+    {% comment %} <!-- Hero Image Block (definido para ser sobreescrito en index.html) -->
     {% block hero_image %}
-    {% endblock hero_image %}
+    {% endblock hero_image %} {% endcomment %}
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{% static "img/breadcrumb.jpg" %}">
+    <section id="section-contact" class="breadcrumb-section set-bg" data-setbg="{% static "img/breadcrumb.jpg" %}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -83,7 +84,7 @@
     <!-- Contact Section End -->
 
     <!-- Map Begin -->
-    <div class="map">
+    <div id="map" class="map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d6539.436185760592!2d-76.94333028758597!3d-12.228555587972757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDEzJzQyLjgiUyA3NsKwNTYnMjYuNyJX!5e1!3m2!1ses!2spe!4v1729838389390!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="map-inside">
             <i class="icon_pin"></i>
@@ -99,7 +100,7 @@
     <!-- Map End -->
 
     <!-- Contact Form Begin -->
-    <div class="contact-form spad">
+    <div id="msj-reclamos" class="contact-form spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -109,7 +110,7 @@
                 </div>
             </div>
 
-            <form action="#" method="POST">
+            <form action="#" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
@@ -118,8 +119,20 @@
                     <div class="col-lg-6 col-md-6">
                         <input type="text" placeholder="Tu Correo" name="email">
                     </div>
+                    <div class="col-lg-12">
+                        <textarea placeholder="Tu Mensaje" name="message"></textarea>
+                    </div>
+                    <div class="col-lg-12">
+                        <!-- Drag and Drop Container -->
+                        <div id="drop-zone" class="drop-zone">
+                            <p>Arrastra y suelta imágenes aquí o haz clic para seleccionarlas.</p>
+                            <input type="file" id="file-input" name="images" accept="image/*" multiple hidden>
+                        </div>
+                    </div>
+
+                    <br>
+
                     <div class="col-lg-12 text-center">
-                        <textarea placeholder="Tu Mensaje" name="message" ></textarea>
                         <button type="submit" class="site-btn">ENVIAR MENSAJE</button>
                     </div>
                 </div>
@@ -128,6 +141,70 @@
         </div>
     </div>
     <!-- Contact Form End -->
+
+    <!-- Drag and Drop Styles -->
+<style>
+    .drop-zone {
+        border: 2px dashed #d3d3d3;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 0px 0px 25px 0px;
+    }
+
+    .drop-zone:hover {
+        background-color: #f1f1f1;
+    }
+
+    .drop-zone p {
+        margin: 0;
+        color: #888;
+        font-size: 14px;
+    }
+</style>
+
+<!-- Drag and Drop Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropZone = document.getElementById("drop-zone");
+        const fileInput = document.getElementById("file-input");
+
+        // Open file dialog when clicking on the drop zone
+        dropZone.addEventListener("click", () => fileInput.click());
+
+        // Handle drag and drop events
+        dropZone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropZone.style.backgroundColor = "#e9e9e9";
+        });
+
+        dropZone.addEventListener("dragleave", () => {
+            dropZone.style.backgroundColor = "#f9f9f9";
+        });
+
+        dropZone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropZone.style.backgroundColor = "#f9f9f9";
+
+            const files = e.dataTransfer.files;
+            fileInput.files = files; // Assign files to the hidden input
+
+            // Show file names (optional)
+            let fileNames = Array.from(files).map(file => file.name).join(", ");
+            dropZone.querySelector("p").textContent = `Seleccionados: ${fileNames}`;
+        });
+
+        // Update file names if files are selected via the file dialog
+        fileInput.addEventListener("change", () => {
+            let fileNames = Array.from(fileInput.files).map(file => file.name).join(", ");
+            dropZone.querySelector("p").textContent = `Seleccionados: ${fileNames}`;
+        });
+    });
+</script>
+
 
     {% comment %} START FOOTER {% endcomment %}
     {% include "footer.html" %}
