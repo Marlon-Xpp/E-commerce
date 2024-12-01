@@ -115,7 +115,8 @@ td {
 }
 
 .amount-column {
-    text-align: right;
+    text-align: left;
+    font-size: 13px;
 }
 
 .totals {

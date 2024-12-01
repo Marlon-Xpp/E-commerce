@@ -26,19 +26,19 @@
             <div class="invoice-details-left">
                 <div class="details-row">
                     <div class="details-label">Nombres:</div>
-                    <div class="details-value">Marlon Pillaca</div>
+                    <div class="details-value">{{ payment_details.additional_info.payer.first_name}}</div>
                 </div>
                 <div class="details-row">
                     <div class="details-label">Apellidos:</div>
-                    <div class="details-value">Pillaca Pullo</div>
+                    <div class="details-value">{{ payment_details.additional_info.payer.last_name}}</div>
                 </div>
                 <div class="details-row">
                     <div class="details-label">Correo:</div>
-                    <div class="details-value">prueba@gmail</div>
+                    <div class="details-value">{{ email }}</div>
                 </div>
                 <div class="details-row">
                     <div class="details-label">Fecha de emisión:</div>
-                    <div class="details-value">30/11/2024</div>
+                    <div class="details-value">{{ payment_details.date_approved }}</div>
                 </div>
                 <div class="details-row">
                     <div class="details-label">Tipo de envio:</div>
@@ -52,13 +52,10 @@
 
                 <div class="details-row">
                     <div class="details-label">Telefono:</div>
-                    <div class="details-value">934 932 293</div>
+                    <div class="details-value">{{ payment_details.additional_info.payer.phone.number }}</div>
                 </div>
                 
-                <div class="details-row">
-                    <div class="details-label">Fecha de vencimiento:</div>
-                    <div class="details-value">21/12/2024</div>
-                </div>
+
                 <div class="details-row">
                     <div class="details-label">Moneda:</div>
                     <div class="details-value">SOL</div>
@@ -93,39 +90,41 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Congelados Brontosaurios Costillas</td>
-                    <td>2</td>
-                    <td class="amount-column">120€</td>
-                    <td class="amount-column">-</td>
-                    <!-- <td class="amount-column">2%</td> -->
-                    <td class="amount-column">240,00€</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Chuletas de Mamut</td>
-                    <td>14</td>
-                    <td class="amount-column">175€</td>
-                    <td class="amount-column">-10%</td>
-                    <!-- <td class="amount-column">5%</td> -->
-                    <td class="amount-column">2.205,00€</td>
-                </tr>
+                {% comment %} {% if payment_details.items %} {% endcomment %}
+                    {% comment %} {% for item in payment_details.additional_info.items %} {% endcomment %}
+                    {% for item in cart.items.all %}
+                    <tr>
+                        <td>1</td>
+                        <td>{{ item.product.name }}</td>
+                        <td id="tquantity">{{ item.quantity }}</td>
+                        <td class="amount-column" id="tunit-price">S/{{ item.product.price }}</td>
+
+                        <td class="amount-column">-</td>
+                        <!-- <td class="amount-column">2%</td> -->
+                        {% comment %} aqui va el total del producto {% endcomment %}
+                        <td class="amount-column" >S/ {{ item.total_price }} <td></td>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                
+                {% comment %} {% endif %} {% endcomment %}
+
             </tbody>
         </table>
 
         <div class="totals">
             <div class="total-row">
                 <span>Subtotal:</span>
-                <span>2.445,00€</span>
+                <span>S/{{ cart.subtotal }}</span>
             </div>
             
             <div class="total-row final-total">
                 <span>TOTAL:</span>
-                <span>2.560,05€</span>
+                <span>S/{{ cart.subtotal }}</span>
             </div>
             
         </div>
     </div>
 </body>
 </html>
+

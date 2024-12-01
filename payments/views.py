@@ -42,8 +42,6 @@ def checkout(request):
 @login_required
 def method_buy(request):
     
-    #lista global fact_user añadir losc ampos obteneidos desde la factura
-    
     print("Entrando a la funcion POST")
     if  request.method == "POST":
         
@@ -94,7 +92,7 @@ def method_buy(request):
         # total_items = sum(item.quantity for item in cart.items.all())
     else:
         # Si el usuario no está autenticado, no se crea un carrito, solo asignamos 0 productos
-        carts = None  # No hay carrito para usuarios no autenticados
+        cart = None  # No hay carrito para usuarios no autenticados
         # total_items = 0  # Por defecto, el total de productos es 0
         
     # Generar URLs dinámicamente
@@ -115,6 +113,9 @@ def method_buy(request):
         }
         
         items.append(item)
+    
+    
+    
     
     
     # Definir el payer (comprador)
@@ -170,13 +171,23 @@ def success_page(request):
 
         # Obtener los detalles del pago usando el payment_id
         payment = mp.payment().get(payment_id)
-
+        print(payment_id)
+        
     if payment['status'] == 200:
         # Obtener la información del pago
         payment_details = payment['response']
         
+        #print(payment['response']['additional_info'])
         #Capturamos el email del cliente desde la session temporalmente
         email = request.session.get("email","Correo No Disponible")
+        
+        if request.user.is_authenticated:
+            # Si el usuario está autenticado, obtenemos o creamos el carrito
+            cart, created = Cart.objects.get_or_create(user=request.user)
+        else:
+            # Si el usuario no está autenticado, no se crea un carrito, solo asignamos 0 productos
+            cart = None  
+
         
         enviar_correo_simple(
         #correo del cliente estatico, OBSERVACION CAMBIO
@@ -188,11 +199,13 @@ def success_page(request):
         'verify/success.html',  # Ruta de la plantilla
         {
             'payment_details': payment_details,
-            
+            'email': email
         }))
-    
-        
-        return render(request, "verify/success.html", {"payment_details": payment_details})
+        return render(request, "verify/success.html", {
+            "payment_details": payment_details,
+            'email': email,
+            "cart":cart,
+            })
 
     else:
         return JsonResponse({"error": "No se proporcionó el payment_id"}, status=400)
