@@ -57,6 +57,10 @@ def method_buy(request):
         
         
         print(f"Añadiendo los campos en una session temporal")
+        # request.session['firstname'] = firstname
+        # request.session['lastname'] = lastname 
+        # request.session['phone'] = phone 
+        # request.session['address'] = address  
         request.session['email'] = email 
         print("Se añadio exitosamente")
         
@@ -114,23 +118,24 @@ def method_buy(request):
     
     
     # Definir el payer (comprador)
-    # payer = {
-    #     "name": "Juan Pérez",            # Nombre del comprador
-    #     "surname": "González",           # Apellido del comprador
-    #     "email": "juan.perez@example.com", # Correo electrónico
-    #     "identification": {
-    #         "type": "DNI",               # Tipo de identificación (DNI, Pasaporte, etc.)
-    #         "number": "12345678"         # Número de identificación
-    #     },
-    #     "phone": {
-    #         "area_code": "11",           # Código de área
-    #         "number": "123456789"        # Número de teléfono
-    #     }
-    # }
+    payer = {
+        "name": firstname,            # Nombre del comprador
+        "surname": lastname,           # Apellido del comprador
+        "email": email, # Correo electrónico
+        "identification": {
+            "type": "DNI",               # Tipo de identificación (DNI, Pasaporte, etc.)
+            "number": "12345678"         # Número de identificación
+        },
+        "phone": {
+            "area_code": "51",           # Código de área
+            "number": phone,        # Número de teléfono
+        }
+    }
     
     # Crear la preferencia con categoría
     preference_data = {
         "items": items,
+        "payer": payer,
         
         "back_urls": {
             "success": success_url,
