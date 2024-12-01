@@ -32,7 +32,9 @@ ALLOWED_HOSTS = []
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
+#configuracion de las api de mercado pago el key y el token
+MERCADOPAGO_TEST_PUBLIC_KEY = 'TEST-c43be07b-ca92-44cd-88cb-87e640ac3dda'
+MERCADOPAGO_TEST_ACCESS_TOKEN = 'TEST-5038588232712518-112923-a242cf4b6eff498c30e34d7c5f16bea1-1855980331'
 
 # settings.py
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -49,19 +49,20 @@
             </div>
             <div class="checkout__form">
                 <h4>Detalles de facturación</h4>
-                <form action="{% url 'method_buy' %}" >
+                <form action="{% url 'method_buy' %}" method="POST">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Primer Nombre<span>*</span></p>
-                                        <input id="name" name="name" type="text">
+                                        <p>Nombres<span>*</span></p>
+                                        <input id="name" name="firstname" type="text">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Segundo Nombre<span>*</span></p>
+                                        <p>Apellidos<span>*</span></p>
                                         <input id="lastname" name="lastname" type="text">
                                     </div>
                                 </div>
@@ -72,8 +73,8 @@
                             </div>
                             <div class="checkout__input">
                                 <p>Dirección<span>*</span></p>
-                                <input id="direccion" name = "country" type="text" placeholder="Dirección" class="checkout__input__add">
-                                <input id="direccion" type="text" placeholder="Apartamento, Suite, Unite ECT (opcional)">
+                                <input id="direccion" name = "address" type="text" placeholder="Dirección" class="checkout__input__add">
+                                {% comment %} <input id="direccion" type="text" placeholder="Apartamento, Suite, Unite ECT (opcional)"> {% endcomment %}
                             </div>
                             <div class="checkout__input">
                                 <p>Pueblo/Ciudad<span>*</span></p>
@@ -97,7 +98,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Correo<span>*</span></p>
-                                        <input id="gmail"type="text">
+                                        <input id="gmail"type="Email" name="email">
                                     </div>
                                 </div>
                             </div>
