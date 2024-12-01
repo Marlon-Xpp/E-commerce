@@ -59,7 +59,7 @@
                                     {% for item in cart.items.all %}
                                         <tr>
                                             <td>
-                                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="width: 100px; height: auto;">
+                                                <a href="{% url "shop-details" item.product.id %}"> <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="width: 100px; height: auto;"> </a> 
                                             </td>
                                             <td>{{ item.product.name }}</td>
                                             <td>{{ item.product.price }}</td>

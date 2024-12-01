@@ -58,7 +58,7 @@ def method_buy(request):
         # request.session['firstname'] = firstname
         # request.session['lastname'] = lastname 
         # request.session['phone'] = phone 
-        # request.session['address'] = address  
+        request.session['address'] = address  
         request.session['email'] = email 
         print("Se añadio exitosamente")
         
@@ -180,6 +180,7 @@ def success_page(request):
         #print(payment['response']['additional_info'])
         #Capturamos el email del cliente desde la session temporalmente
         email = request.session.get("email","Correo No Disponible")
+        address = request.session.get("address","Direccion No Disponible")
         
         if request.user.is_authenticated:
             # Si el usuario está autenticado, obtenemos o creamos el carrito
@@ -199,12 +200,14 @@ def success_page(request):
         'verify/success.html',  # Ruta de la plantilla
         {
             'payment_details': payment_details,
-            'email': email
+            'email': email,
+            "address": address,
         }))
         return render(request, "verify/success.html", {
             "payment_details": payment_details,
             'email': email,
             "cart":cart,
+            "address":address,
             })
 
     else:
