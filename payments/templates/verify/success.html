@@ -11,7 +11,7 @@
     <div class="invoice-container">
         <div class="header">
             <div class="logo-placeholder">
-                <img src="{% static "img/logo.png" %}" alt="">
+                <a href="{% url "home" %}"><img src="{% static "img/logo.png" %}" alt=""></a>
             </div>
             <div class="company-info">
                 <h1>IBAFEX SAC</h1>
@@ -94,7 +94,7 @@
                     {% comment %} {% for item in payment_details.additional_info.items %} {% endcomment %}
                     {% for item in cart.items.all %}
                     <tr>
-                        <td>1</td>
+                        <td>{{ forloop.counter }}</td>
                         <td>{{ item.product.name }}</td>
                         <td id="tquantity">{{ item.quantity }}</td>
                         <td class="amount-column" id="tunit-price">S/{{ item.product.price }}</td>
@@ -124,6 +124,8 @@
             </div>
             
         </div>
+
+        <a href="{% url "home" %}">Ir a inicio</a>
     </div>
 </body>
 </html>
