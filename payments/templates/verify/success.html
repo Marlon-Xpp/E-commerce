@@ -1,103 +1,131 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #333;
-        }
-        .details {
-            margin-bottom: 20px;
-        }
-        .details p {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        .items {
-            margin-top: 20px;
-        }
-        .items table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        .items th, .items td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .items th {
-            background-color: #f1f1f1;
-        }
-        .total {
-            font-size: 18px;
-            font-weight: bold;
-            text-align: right;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #888;
-        }
-    </style>
-
-
+    <link rel="stylesheet" href="{% static "css/success.css" %}">
+    <title>Factura Electronica</title>
 </head>
 <body>
-    <h1>Detalles del Pago</h1>
+    <div class="invoice-container">
+        <div class="header">
+            <div class="logo-placeholder">
+                <img src="{% static "img/logo.png" %}" alt="">
+            </div>
+            <div class="company-info">
+                <h1>IBAFEX SAC</h1>
+                <p>Compañia de abarrote por mayor</p>
+                <p>http://dinostore.bed | admin@dinostore.bed +51 995 432 234</p>
+            </div>
+        </div>
 
-    <h2>Comprador</h2>
-    <p><strong>Nombre:</strong> {{ payment_details.payer.first_name }} {{ payment_details.payer.last_name }}</p>
-    <p><strong>Email:</strong> {{ payment_details.payer.email }}</p>
-    <p><strong>Identificación:</strong> {{ payment_details.payer.identification.number }}</p>
-    
-    <h2>Productos</h2>
-    {% if payment_details.items %}
-        <ul>
-            {% for item in payment_details.additional_info.items %}
-                <li>
-                    <strong>Producto:</strong> {{ item.title }}<br>
-                    <strong>Cantidad:</strong> {{ item.quantity }}<br>
-                    <strong>Precio Unitario:</strong> S/{{ item.unit_price }}<br>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No hay productos en esta transacción.</p>
-    {% endif %}
+        <div class="invoice-title">FACTURA</div>
 
-    <h2>Resumen de la Transacción</h2>
-    <p><strong>Total de la Transacción:</strong> S/{{ payment_details.transaction_amount }}</p>
-    <p><strong>Fecha de Aprobación:</strong> {{ payment_details.date_approved }}</p>
+        <div class="invoice-details">
+            <div class="invoice-details-left">
+                <div class="details-row">
+                    <div class="details-label">Nombres:</div>
+                    <div class="details-value">Marlon Pillaca</div>
+                </div>
+                <div class="details-row">
+                    <div class="details-label">Apellidos:</div>
+                    <div class="details-value">Pillaca Pullo</div>
+                </div>
+                <div class="details-row">
+                    <div class="details-label">Correo:</div>
+                    <div class="details-value">prueba@gmail</div>
+                </div>
+                <div class="details-row">
+                    <div class="details-label">Fecha de emisión:</div>
+                    <div class="details-value">30/11/2024</div>
+                </div>
+                <div class="details-row">
+                    <div class="details-label">Tipo de envio:</div>
+                    <div class="details-value">Delivery</div>
+                </div>
 
-    
-    <h1> {{payment_details.}}Pago Exitoso</h1>
-    <a href="{% url "home" %}">Regresar al Inicio</a>
+                <div class="details-row">
+                    <div class="details-label">Direccion de envio:</div>
+                    <div class="details-value">Villa el salvador</div>
+                </div>
 
+                <div class="details-row">
+                    <div class="details-label">Telefono:</div>
+                    <div class="details-value">934 932 293</div>
+                </div>
+                
+                <div class="details-row">
+                    <div class="details-label">Fecha de vencimiento:</div>
+                    <div class="details-value">21/12/2024</div>
+                </div>
+                <div class="details-row">
+                    <div class="details-label">Moneda:</div>
+                    <div class="details-value">SOL</div>
+                </div>
+            </div>
+
+            <div class="invoice-details-right">
+                <div class="details-row">
+                    <div class="details-label">Cuenta por:</div>
+                </div>
+                <div class="details-value">
+                    <p> <b>Ibafex Compañia</b> </p>
+                    <p>mz f lt 10 gr 04</p>
+                    <p>+51 954 345 234</p>
+                    <p>ibafex@gmail.com</p>
+                    
+                </div>
+            </div>
+
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 5%">#</th>
+                    <th style="width: 45%">Artículo</th>
+                    <th style="width: 10%">Cantidad</th>
+                    <th style="width: 15%">Precio</th>
+                    <th style="width: 10%">Descuento</th>
+                    <!-- <th style="width: 5%">Impuestas</th> -->
+                    <th style="width: 10%">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Congelados Brontosaurios Costillas</td>
+                    <td>2</td>
+                    <td class="amount-column">120€</td>
+                    <td class="amount-column">-</td>
+                    <!-- <td class="amount-column">2%</td> -->
+                    <td class="amount-column">240,00€</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Chuletas de Mamut</td>
+                    <td>14</td>
+                    <td class="amount-column">175€</td>
+                    <td class="amount-column">-10%</td>
+                    <!-- <td class="amount-column">5%</td> -->
+                    <td class="amount-column">2.205,00€</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="totals">
+            <div class="total-row">
+                <span>Subtotal:</span>
+                <span>2.445,00€</span>
+            </div>
+            
+            <div class="total-row final-total">
+                <span>TOTAL:</span>
+                <span>2.560,05€</span>
+            </div>
+            
+        </div>
+    </div>
 </body>
 </html>
