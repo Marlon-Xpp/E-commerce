@@ -105,11 +105,18 @@ def method_buy(request):
     
     for cart in cart.items.all():
         
+        # Verifica si hay descuento y maneja el caso en que sea None
+        if cart.product.discount is not None and cart.product.discount > 0:
+            unit_price = float(cart.product.price_discount())  # Precio con descuento
+        else:
+            unit_price = float(cart.product.price)  # Precio original
+        
         item = {
             "title": cart.product.name,  # Nombre del producto
             "description": cart.product.name, # Descripción
             "quantity": cart.quantity,  # Cantidad
-            "unit_price": float(cart.product.price), # Precio
+            
+            "unit_price": unit_price, # Precio
         }
         
         items.append(item)

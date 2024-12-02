@@ -114,41 +114,58 @@
                     <div class="section-title">
                         <h2>Productos Destacados</h2>
                     </div>
+
                     <div class="featured__controls">
                         <ul>
                             <li class="active" data-filter="*">Todo</li>
-                            <li data-filter=".oranges">Oranges</li>
-                            <li data-filter=".fresh-meat">Fresh Meat</li>
-                            <li data-filter=".vegetables">Vegetables</li>
-                            <li data-filter=".fastfood">Fastfood</li>
+                            {% for category in get_category %}
+                                <li data-filter=".{{ category }}">{{ category }}</li>
+                            {% endfor %}
                         </ul>
-                    </div>
+                    </div> 
+                    
                 </div>
             </div>
 
+
             <div class="row featured__filter">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-1.jpg" %}">
-                            <ul class="featured__item__pic__hover">
-                                {% comment %} <li><a href="#"><i class="fa fa-heart"></i></a></li> {% endcomment %}
-                                {% comment %} <li><a href="{% url "shop-details" product.id %}"><i class="fa fa-eye"></i></a></li>
-                                <li><a href="{% url 'add_to_cart' product.id %}"><i class="fa fa-shopping-cart"></i></a></li>
-                             {% endcomment %}
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>S/30.00</h5>
+
+                {% if featured_products %}
+                    {% for product in featured_products %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix {{ product.category }}">
+                        
+                        <div class="featured__item">
+                            <div class="featured__item__pic set-bg" data-setbg="{{ product.image.url }}">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{% url "shop-details" product.id %}"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="{% url 'add_to_cart' product.id %}"><i class="fa fa-shopping-cart"></i></a></li> 
+                                </ul>
+                            </div>
+                            {% if product.price_discount > 0 %}
+                                    <div class="product__discount__item__text">
+                                        <h5><a href="#">{{ product.name }}</a></h5>
+                                        <div class="product__item__price">S/{{ product.price_discount }} <span>{{ product.price }}</span></div>
+                                    </div>
+                                {% else %}
+                                    <div class="product__discount__item__text">
+                                        <h5><a href="#">{{ product.name }}</a></h5>
+                                        <div class="product__item__price">S/{{ product.price}}</div>
+                                        {% comment %} <p>{{ product.category }}</p> {% endcomment %}
+                                    </div>
+                            {% endif %}
+                                
                         </div>
                     </div>
-                </div>
+                    
+                    {% endfor %}
+                    
+                {% else %}
+                    <p>No existen productos Destacados</p>
+                {% endif %}
+                
 
-                {% comment %} {% for  in  %}
                 
-                
-                
-                {% endfor %} {% endcomment %}
                 {% comment %} <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="{% static "img/featured/feature-2.jpg" %}">

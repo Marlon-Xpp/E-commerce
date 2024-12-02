@@ -27,7 +27,7 @@ class Product(models.Model):
         ('Aceites', 'Aceites'),
         ('Chocolates', 'Chocolates'),
         ('Frijoles', 'Frijoles'),
-        ('Higiene Dental', 'Higiene Dental'),
+        ('Higiene_Dental', 'Higiene Dental'),
         ('Fórmulas Infantiles', 'Fórmulas Infantiles'),
         ('Dulces', 'Dulces'),
         ('Galleta', 'Galleta'),
@@ -72,12 +72,27 @@ class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
-
+    
+    
     def total_price(self):
-        return self.product.price * self.quantity
+        """Calcula el precio total usando el precio con descuento si existe."""
+        """Calcula el precio total usando el precio con descuento si existe."""
+        if self.product.discount is not None and self.product.discount > 0:  # Verifica si discount no es None y es mayor a 0
+            discounted_price = self.product.price_discount()  # Precio con descuento
+            return discounted_price * self.quantity
+        else:  # Sin descuento o si discount es None
+            return self.product.price * self.quantity
+        
+        # """Calcula el precio total considerando el descuento si existe."""
+        # discounted_price = self.product.price_discount()  # Calcula el precio con descuento
+        # return discounted_price * self.quantity
 
     def __str__(self):
-        return f"{self.quantity} of {self.product.name}"
+        return( 
+                f"{self.quantity} of {self.product.name} - "
+                f"Discounted Price: {self.product.price_discount()} each, "
+                f"Total: {self.total_price()}"
+                )
 
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

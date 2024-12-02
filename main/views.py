@@ -56,6 +56,11 @@ def home(request):
     first_products = Product.objects.order_by("date_added")[:3]
     # Obtener los 3 productos con más likes (mejores valorados)
     top_rated_products = Product.objects.order_by("-likes")[:3]
+    # Obtener todos los productos destacados
+    featured_products = Product.objects.filter(featured=True)
+    
+    #obtener categorias
+    get_category = Product.objects.values_list('category', flat=True).distinct()
     
     if request.user.is_authenticated:
         # Si el usuario está autenticado, obtenemos o creamos el carrito
@@ -82,6 +87,9 @@ def home(request):
                 "cart": cart,
                 "total_items":total_items,
                 "favorite_products_count":favorite_products_count,
+                "featured_products": featured_products,
+                "get_category":get_category,
+                
                 })
 
 
