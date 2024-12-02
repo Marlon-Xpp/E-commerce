@@ -5,5 +5,10 @@ set -o errexit
 pip install -r requirements.txt
 # Convert static asset files
 python manage.py collectstatic --no-input
+
+python manage.py makemigrations
+
 # Apply any outstanding database migrations
 python manage.py migrate
+
+python manage.py loaddata data.json

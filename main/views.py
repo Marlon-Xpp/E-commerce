@@ -118,9 +118,9 @@ def blog_details(request):
                 "favorite_products_count":favorite_products_count,
                 })
 
-def blog(request):
-    company_data = get_company_data()  # Llama a la función para obtener los datos
-    return render(request, "blog.html", {"company_data": company_data})
+# def blog(request):
+#     company_data = get_company_data()  # Llama a la función para obtener los datos
+#     return render(request, "blog.html", {"company_data": company_data})
 
 
 
