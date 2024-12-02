@@ -12,7 +12,7 @@ python manage.py makemigrations
 python manage.py migrate
 
 # python manage.py loaddata data.json
-python manage.py loaddata data_utf8.json
+python manage.py loaddata data.json
 
 
 
