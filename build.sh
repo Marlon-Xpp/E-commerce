@@ -6,13 +6,13 @@ pip install -r requirements.txt
 # Convert static asset files
 python manage.py collectstatic --no-input
 
-python manage.py makemigrations
+# python manage.py makemigrations
 
 # Apply any outstanding database migrations
 python manage.py migrate
 
 # python manage.py loaddata data.json
-python manage.py loaddata data_utf8.json
+# python manage.py loaddata data_utf8.json
 
 
 
