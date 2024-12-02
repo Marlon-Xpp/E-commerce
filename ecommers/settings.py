@@ -160,8 +160,6 @@ STATIC_URL = "static/"
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
@@ -172,18 +170,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # CONFIGURACION PARA LOS ARCHIVOS  HEROKU
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-# STATIC_TMP = os.path.join(BASE_DIR, "static")
-# STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_TMP = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
 
-# os.makedirs(STATIC_TMP, exist_ok=True)
-# os.makedirs(STATIC_ROOT, exist_ok=True)
+os.makedirs(STATIC_TMP, exist_ok=True)
+os.makedirs(STATIC_ROOT, exist_ok=True)
 
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, "static"),
-# )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 
-# # Agregar esta configuracion de static storage
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Agregar esta configuracion de static storage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #20/10/30-mM*123456
