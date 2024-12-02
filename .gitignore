@@ -1,2 +1,4 @@
 # Ignorar el entorno virtual
 .venv/
+db.sqlite3
+__pycache__

@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 from datetime import timedelta  # Asegúrate de importar timedelta
 
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,12 +24,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-*_-vh%e9&%%gl943gmf6$ckbjv!sn4(u%%1w&ex8kgnll_w(!_"
+SECRET_KEY = os.environ.get("SECRET_KEY", default="your secret key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Cambiar el debug a false para desplegarlo en heroku
+DEBUG = "RENDER" not in os.environ
 
+# ALLOWED_HOSTS = []
 ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -48,7 +57,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Configuraciones de autenticación
 MAX_ATTEMPTS = 5  # Número máximo de intentos permitidos
-BLOCK_TIME = timedelta(seconds=15)  # Tiempo de bloqueo de 15 segundos
+BLOCK_TIME = timedelta(seconds=120)  # Tiempo de bloqueo de 15 segundos
 
 # Application definition
 INSTALLED_APPS = [
@@ -73,6 +82,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Agregar el whitenoise una ves instalado
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = "ecommers.urls"
@@ -100,13 +111,11 @@ WSGI_APPLICATION = "ecommers.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(
+        default="postgresql://postgres:postgres@localhost/posgres",
+        conn_max_age=600,
+    )
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -141,9 +150,40 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+
+
 STATIC_URL = "static/"
+# MEDIA_URL = "/uploads"
+# MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+
+# This production code might break development mode, so we check whether we're in DEBUG mode
+if not DEBUG:
+    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
+    # and renames the files with unique names for each version to support long-term caching
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+
+# CONFIGURACION PARA LOS ARCHIVOS  HEROKU
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATIC_TMP = os.path.join(BASE_DIR, "static")
+# STATIC_URL = "/static/"
+
+# os.makedirs(STATIC_TMP, exist_ok=True)
+# os.makedirs(STATIC_ROOT, exist_ok=True)
+
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static"),
+# )
+
+# # Agregar esta configuracion de static storage
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+#20/10/30-mM*123456
