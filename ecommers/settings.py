@@ -41,17 +41,30 @@ if RENDER_EXTERNAL_HOSTNAME:
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+STATIC_URL = "/static/"
+
+# Configuración de archivos estáticos para producción
+if not DEBUG:
+    # Cuando no estamos en DEBUG, configuramos STATIC_ROOT y el almacenamiento con WhiteNoise
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+else:
+    # En desarrollo, se usan archivos estáticos desde el directorio 'static' en el proyecto
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+    
+    
 #configuracion de las api de mercado pago el key y el token
 MERCADOPAGO_TEST_PUBLIC_KEY = 'TEST-c43be07b-ca92-44cd-88cb-87e640ac3dda'
 MERCADOPAGO_TEST_ACCESS_TOKEN = 'TEST-5038588232712518-112923-a242cf4b6eff498c30e34d7c5f16bea1-1855980331'
 
-# settings.py
+# Configuración de correos electrónicos
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Cambia esto si usas otro servidor de correo
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'mpillacap@autonoma.edu.pe'  # Cambia esto por el correo que usarás para enviar
-EMAIL_HOST_PASSWORD = '10216530'  # Cambia esto por la contraseña del correo
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'mpillacap@autonoma.edu.pe')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '10216530')  # Usa una variable de entorno
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
@@ -152,15 +165,15 @@ USE_TZ = True
 
 
 
-STATIC_URL = "static/"
-# MEDIA_URL = "/uploads"
-# MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+# STATIC_URL = "static/"
+# # MEDIA_URL = "/uploads"
+# # MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
-# This production code might break development mode, so we check whether we're in DEBUG mode
-if not DEBUG:
-    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# # This production code might break development mode, so we check whether we're in DEBUG mode
+# if not DEBUG:
+#     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -169,19 +182,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 
-# CONFIGURACION PARA LOS ARCHIVOS  HEROKU
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATIC_TMP = os.path.join(BASE_DIR, "static")
-STATIC_URL = "/static/"
+# # CONFIGURACION PARA LOS ARCHIVOS  HEROKU
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATIC_TMP = os.path.join(BASE_DIR, "static")
+# STATIC_URL = "/static/"
 
-os.makedirs(STATIC_TMP, exist_ok=True)
-os.makedirs(STATIC_ROOT, exist_ok=True)
+# os.makedirs(STATIC_TMP, exist_ok=True)
+# os.makedirs(STATIC_ROOT, exist_ok=True)
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static"),
+# )
 
-# Agregar esta configuracion de static storage
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# # Agregar esta configuracion de static storage
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #20/10/30-mM*123456
