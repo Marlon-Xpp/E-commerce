@@ -42,6 +42,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.1/howto/static-files/
+
 STATIC_URL = "/static/"
 
 # Configuración de archivos estáticos para producción
@@ -118,19 +121,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "ecommers.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
+    # Configurar con el link del render q te da esta es la clave para vinuclar remotamente 
     "default": dj_database_url.config(
         default="postgresql://bdecommers_user:F1hm2W85I6XLIemGFQKQxca5m2JQigX1@dpg-ct71v1dumphs73dgl4b0-a.oregon-postgres.render.com/bdecommers",
         conn_max_age=600,
     )
-    
-    # "default": dj_database_url.parse(os.environ.get("DATABASE_URL"),
-    # )
-    
+
     # esat es la configuracion para trabajr localmente con sqlite3 por defecto
     # "default": {
     #     "ENGINE": "django.db.backends.sqlite3",
@@ -168,41 +168,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-
-
-# STATIC_URL = "static/"
-# # MEDIA_URL = "/uploads"
-# # MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
-
-# # This production code might break development mode, so we check whether we're in DEBUG mode
-# if not DEBUG:
-#     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
-
-# # CONFIGURACION PARA LOS ARCHIVOS  HEROKU
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-# STATIC_TMP = os.path.join(BASE_DIR, "static")
-# STATIC_URL = "/static/"
-
-# os.makedirs(STATIC_TMP, exist_ok=True)
-# os.makedirs(STATIC_ROOT, exist_ok=True)
-
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, "static"),
-# )
-
-# # Agregar esta configuracion de static storage
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-#20/10/30-mM*123456
