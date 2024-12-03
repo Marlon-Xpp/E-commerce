@@ -123,13 +123,13 @@ WSGI_APPLICATION = "ecommers.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    # "default": dj_database_url.config(
-    #     default="postgresql://postgres:postgres@localhost/postgres",
-    #     conn_max_age=600,
-    # )
-    
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"),
+    "default": dj_database_url.config(
+        default="postgresql://bdecommers_user:F1hm2W85I6XLIemGFQKQxca5m2JQigX1@dpg-ct71v1dumphs73dgl4b0-a.oregon-postgres.render.com/bdecommers",
+        conn_max_age=600,
     )
+    
+    # "default": dj_database_url.parse(os.environ.get("DATABASE_URL"),
+    # )
     
     # esat es la configuracion para trabajr localmente con sqlite3 por defecto
     # "default": {
