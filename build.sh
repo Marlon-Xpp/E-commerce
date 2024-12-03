@@ -11,7 +11,7 @@ python manage.py makemigrations
 # Apply any outstanding database migrations
 python manage.py migrate
 
-python manage.py loaddata products_product.json
+python manage.py loaddata product_utf8.json
 
 # python manage.py loaddata data.json
 # python manage.py loaddata data_utf8.json

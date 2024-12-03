@@ -9,8 +9,8 @@
 
 
 # Cambiar la codificación del archivo a UTF-8
-input_file = 'data.json'  # Archivo original
-output_file = 'data_utf8.json'  # Archivo convertido
+input_file = 'products_product.json'  # Archivo original
+output_file = 'product_utf8.json'  # Archivo convertido
 
 # Leer el archivo en UTF-16 y guardarlo como UTF-8
 with open(input_file, 'r', encoding='UTF-16') as f_in:

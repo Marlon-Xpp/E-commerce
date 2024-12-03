@@ -1,0 +1,551 @@
+[
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "name": "Aceite de Cßrtamo",
+        "description": "Aceite de Cßrtamo OlÚico de  ml - Oleico ZK, Libre de colesterol por su origen vegetal, Alto contenido de Omega 9, Resiste altas temperaturas, Ideal para freÝr, hornear, cocinar y aderezar cualquier tipo de alimentos - cantidad 710 Mililitros",
+        "price": "9.50",
+        "brand": "OlÚico",
+        "stock": 40,
+        "image": "products/Aceite_de_Cßrtamo_OlÚico_710M_-_ZK.jpg",
+        "category": "Aceites",
+        "featured": false,
+        "date_added": "2024-11-29T23:01:21.872Z",
+        "likes": 1,
+        "sales": 0,
+        "weight": "710.00",
+        "unit_weight": "mg",
+        "discount": null,
+        "liked_by": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+        "name": "Aceite de Oliva",
+        "description": "Aceite de Oliva Member's Mark Extra Virgen Orgßnico 1L - Member┤s Mark ZK, No contiene colesterol, Delicioso sabor, Posee vitaminas A, D, E y K - 1L",
+        "price": "32.50",
+        "brand": "Member┤s Mark",
+        "stock": 56,
+        "image": "products/Aceite_de_Oliva_Members_Mark_Extra_Virgen_Orgßnico_1_L-_ZK.jpg",
+        "category": "Aceites",
+        "featured": true,
+        "date_added": "2024-11-29T23:03:07.799Z",
+        "likes": 2,
+        "sales": 0,
+        "weight": "1.00",
+        "unit_weight": "kg",
+        "discount": 15,
+        "liked_by": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+        "name": "Aceite Nutrioli",
+        "description": "Aceite de marca Nutrioli de 850 ml es el aceite 100% puro de soya, reconocido por sus beneficios a la salud y por su alta calidad; desde la selecci¾n de las mejores semillas de soya, hasta su proceso de elaboraci¾n ·nico en el mundo, Nutrioli es Puro de Soya, Pura Salud. - 850ml",
+        "price": "8.50",
+        "brand": "Ragasa",
+        "stock": 45,
+        "image": "products/Aceite_Nutrioli_850m.jpg",
+        "category": "Aceites",
+        "featured": true,
+        "date_added": "2024-11-29T23:05:03.600Z",
+        "likes": 2,
+        "sales": 0,
+        "weight": "2.00",
+        "unit_weight": "kg",
+        "discount": null,
+        "liked_by": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 9,
+    "fields": {
+        "name": "Aceite Vegetal",
+        "description": "Aceite Vegetal 1.2.3 de 1 litro - La Corona ZK, No contiene colesterol\r\nDelicioso sabor, Posee vitaminas A, D, E y K",
+        "price": "9.00",
+        "brand": "La Corona",
+        "stock": 15,
+        "image": "products/Aceite_Vegetal_1.2.3_1L_-_ZK.jpg",
+        "category": "Aceites",
+        "featured": false,
+        "date_added": "2024-11-29T23:06:22.042Z",
+        "likes": 10,
+        "sales": 0,
+        "weight": "1.00",
+        "unit_weight": "kg",
+        "discount": null,
+        "liked_by": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+        "name": "Aceite Kartamus",
+        "description": "Caja aceite Kartamus de 900 ml  - Industrial Aceitera, proviniendo de aceites vegetales y una calidad excepcional, Aceite Kartamus trae para ti una deliciosa y saludable opci¾n para cuidar la salud de tu familia.",
+        "price": "10.50",
+        "brand": "Industrial Aceiter",
+        "stock": 45,
+        "image": "products/Caja_aceite_Kartamus_900M_-_SCG.jpg",
+        "category": "Aceites",
+        "featured": false,
+        "date_added": "2024-11-29T23:07:36.456Z",
+        "likes": 1,
+        "sales": 0,
+        "weight": "10.00",
+        "unit_weight": "g",
+        "discount": null,
+        "liked_by": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 11,
+    "fields": {
+        "name": "chocolate Kirkland",
+        "description": "Almendras cubiertas de chocolate Kirkland de 1.36 kilos - Kirkland KOZ",
+        "price": "25.90",
+        "brand": "Kirkland",
+        "stock": 34,
+        "image": "products/Almendras_cubiertas_de_chocolate_Kirkland_1.36K_-_KOZ.jpg",
+        "category": "Chocolates",
+        "featured": false,
+        "date_added": "2024-11-29T23:09:23.036Z",
+        "likes": 1,
+        "sales": 0,
+        "weight": "1.36",
+        "unit_weight": "kg",
+        "discount": null,
+        "liked_by": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 12,
+    "fields": {
+        "name": "Chocolate Barra Hersheys",
+        "description": "Caja de chocolate Hersheys en Barra Leche Leche 20 G - SCG de la marca Hersheys, sabor super delicioso que dan ganas que sea ilimitado",
+        "price": "8.50",
+        "brand": "Hersheys",
+        "stock": 34,
+        "image": "products/Caja_Chocolate_Barra_Hersheys_Leche_20_G_-_SCG.jpg",
+        "category": "Chocolates",
+        "featured": false,
+        "date_added": "2024-11-29T23:10:50.168Z",
+        "likes": 1,
+        "sales": 0,
+        "weight": "20.00",
+        "unit_weight": "g",
+        "discount": null,
+        "liked_by": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 13,
+    "fields": {
+        "name": "Chocolate Bon o Bon",
+        "description": "Caja Chocolate Bon o Bon de leche de 18 piezas, dulce de leche con cacahuetes.- 18P- SCG",
+        "price": "11.90",
+        "brand": "Bon o Bon",
+        "stock": 134,
+        "image": "products/Caja_Chocolate_Bon_o_Bon_de_leche_18P-_SCG.jpg",
+        "category": "Chocolates",
+        "featured": false,
+        "date_added": "2024-11-29T23:12:09.538Z",
+        "likes": 0,
+        "sales": 0,
+        "weight": "270.00",
+        "unit_weight": "g",
+        "discount": null,
+        "liked_by": []
+    }
+},
+{
+    "model": "products.product",
+    "pk": 14,
+    "fields": {
+        "name": "Chocolate Hersheys",
+        "description": "Caja Chocolate Hersheys Kisses Relleno Caramelo Holandes de 120gr - Hersheys rellenos de caramelo tipo Holandes de la marca Hersheys.",
+        "price": "15.60",
+        "brand": "Hersheys",
+        "stock": 43,
+        "image": "products/Caja_Chocolate_Hersheys_Kisses_Relleno_Caramelo_Holandes_120G_-_SCG.jpg",
+        "category": "Chocolates",
+        "featured": true,
+        "date_added": "2024-11-29T23:13:27.782Z",
+        "likes": 2,
+        "sales": 0,
+        "weight": "120.00",
+        "unit_weight": "g",
+        "discount": 10,
+        "liked_by": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 15,
+    "fields": {
+        "name": "Ferrero Rocher",
+        "description": "Caja Chocolates Ferrero Rocher de 102gr en 20 exhibidores de 8 piezas - Ferrero 102G/ 8P - SCG",
+        "price": "23.50",
+        "brand": "Ferrero Rocher",
+        "stock": 49,
+        "image": "products/Caja_Chocolates_Ferrero_Rocher_102G-_8P.jpg",
+        "category": "Chocolates",
+        "featured": true,
+        "date_added": "2024-11-29T23:14:56.972Z",
+        "likes": 1,
+        "sales": 0,
+        "weight": "102.00",
+        "unit_weight": "g",
+        "discount": null,
+        "liked_by": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 16,
+    "fields": {
+        "name": "Frijol Peruano",
+        "description": "Frijol Peruano La Colina de 1 kg - La Colina ZK, acompa±amiento clßsico de tus comidas, rica fuente de proteÝnas y bßsico de tu despensa.",
+        "price": "5.50",
+        "brand": "La Colina",
+        "stock": 94,
+        "image": "products/Frijol_Peruano_La_Colina_1K_-_ZK.jpg",
+        "category": "Frijoles",
+        "featured": false,
+        "date_added": "2024-11-29T23:16:11.487Z",
+        "likes": 1,
+        "sales": 0,
+        "weight": "1.00",
+        "unit_weight": "kg",
+        "discount": null,
+        "liked_by": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 17,
+    "fields": {
+        "name": "Frijol San Lßzaro",
+        "description": "Frijol peruano con  de 900 g - San Lazaro KOZ, rico en nutrientes y en sabor.",
+        "price": "4.30",
+        "brand": "San Lazaro",
+        "stock": 23,
+        "image": "products/Frijol_peruano_San_Lßzaro_900_g_-_KOZ.jpg",
+        "category": "Frijoles",
+        "featured": true,
+        "date_added": "2024-11-29T23:17:07.203Z",
+        "likes": 1,
+        "sales": 0,
+        "weight": "900.00",
+        "unit_weight": "g",
+        "discount": null,
+        "liked_by": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 18,
+    "fields": {
+        "name": "Frijol Schettino",
+        "description": "Frijol Schettino Negro de 1 kg - Schettino ZK, acompa±amiento clßsico de tus comidas Rica fuente de proteÝnas, Bßsico de tu despensa, Un producto perfecto para complementar tus comidas",
+        "price": "5.10",
+        "brand": "Schettino",
+        "stock": 56,
+        "image": "products/Frijol_Schettino_Negro_de_1K_-_ZK.jpg",
+        "category": "Frijoles",
+        "featured": false,
+        "date_added": "2024-11-29T23:18:13.536Z",
+        "likes": 0,
+        "sales": 0,
+        "weight": "1.00",
+        "unit_weight": "kg",
+        "discount": null,
+        "liked_by": []
+    }
+},
+{
+    "model": "products.product",
+    "pk": 19,
+    "fields": {
+        "name": "Frijol Verde",
+        "description": "Frijol Verde Valle Peruano de 2.5 kg - Verde Valle, acompa±amiento clßsico de tus comidas, rica fuente de proteÝnas, bßsico de tu despensa.",
+        "price": "12.90",
+        "brand": "Verde Valle",
+        "stock": 65,
+        "image": "products/Frijol_Verde_Valle_Peruano_2.5K_-_ZK.jpg",
+        "category": "Frijoles",
+        "featured": false,
+        "date_added": "2024-11-29T23:19:09.620Z",
+        "likes": 0,
+        "sales": 0,
+        "weight": "2.50",
+        "unit_weight": "kg",
+        "discount": null,
+        "liked_by": []
+    }
+},
+{
+    "model": "products.product",
+    "pk": 20,
+    "fields": {
+        "name": "Pasta Dental Colgate",
+        "description": "Caja Pasta Dental Colgate Luminous White de 75 ml, contiene per¾xido de hidr¾geno, el mismo ingrediente activo que es utilizado para tratamientos de blanqueamiento.",
+        "price": "14.20",
+        "brand": "Colgate",
+        "stock": 78,
+        "image": "products/Caja_de_Pasta_Dental_Crest_Complete_4_en_1_100M.jpg",
+        "category": "Higiene_Dental",
+        "featured": true,
+        "date_added": "2024-11-29T23:23:09.256Z",
+        "likes": 13,
+        "sales": 4,
+        "weight": "1.00",
+        "unit_weight": "g",
+        "discount": 15,
+        "liked_by": []
+    }
+},
+{
+    "model": "products.product",
+    "pk": 21,
+    "fields": {
+        "name": "Colgate MFP 22M - SCG",
+        "description": "Colgate Palmolive, pasta dental que contiene la mejor f¾rmula para combatir la caries, ademßs de fortalecerlos ya que esta adicionada con calcio, brinda una gran sabor y frescura.",
+        "price": "13.50",
+        "brand": "Colgate",
+        "stock": 91,
+        "image": "products/Caja_Pasta_Dental_Colgate_MFP_22M_-_SCG.jpg",
+        "category": "Higiene_Dental",
+        "featured": true,
+        "date_added": "2024-11-29T23:24:30.028Z",
+        "likes": 8,
+        "sales": 8,
+        "weight": "12.00",
+        "unit_weight": "mg",
+        "discount": 5,
+        "liked_by": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 22,
+    "fields": {
+        "name": "Pasta Dental Crest",
+        "description": "Caja de Pasta Dental Crest Complete 4 en 1 con 36 piezas de 100 ml, si buscas tener una limpieza bucal adecuada todos los dÝas para combatir la caries y el mal aliento Crest Complete tiene para ti la pasta dental 4 en 1 con fluor menta suave de 100 ml, disfruta de una protecci¾n anticaries, blancura, limpieza profunda y una frescura que te acompa±e por mßs tiempo. Haz el complemento perfecto entre la pasta dental y tu cepillo de dientes y disfruta de unos dientes mßs saludables.",
+        "price": "22.90",
+        "brand": "Crest",
+        "stock": 56,
+        "image": "products/Caja_Pasta_Dental_Colgate_Total_150M_SCG.jpg",
+        "category": "Higiene_Dental",
+        "featured": false,
+        "date_added": "2024-11-29T23:26:19.196Z",
+        "likes": 16,
+        "sales": 3,
+        "weight": "1.00",
+        "unit_weight": "g",
+        "discount": null,
+        "liked_by": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 23,
+    "fields": {
+        "name": "Pasta Dental Colgate",
+        "description": "Caja Pasta Dental Colgate Total de 150 ml con 72 piezas - Colgate Palmolive, te brinda 12 horas de protecci¾n para una boca mßs sana, contiene fl·or para una mejor limpieza.",
+        "price": "18.00",
+        "brand": "Colgate",
+        "stock": 62,
+        "image": "products/Caja_Pasta_Dental_Colgate_Triple_Acci¾n_75M_-_SCG.jpg",
+        "category": "Higiene_Dental",
+        "featured": false,
+        "date_added": "2024-11-29T23:27:15.082Z",
+        "likes": 1,
+        "sales": 0,
+        "weight": "10.00",
+        "unit_weight": "g",
+        "discount": 5,
+        "liked_by": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 24,
+    "fields": {
+        "name": "Colgate Triple Acci¾n",
+        "description": "Caja Pasta Dental Colgate Triple Acci¾n 75 ml 72 piezas Colgate Palmolive, esta pasta dental protege contra la caries, blanquea los dientes y brinda un aliento fresco.",
+        "price": "16.70",
+        "brand": "Colgate",
+        "stock": 23,
+        "image": "products/Colgate_Luminous_White_75ml.jpg",
+        "category": "Higiene_Dental",
+        "featured": true,
+        "date_added": "2024-11-29T23:28:27.718Z",
+        "likes": 18,
+        "sales": 8,
+        "weight": "14.00",
+        "unit_weight": "lb",
+        "discount": 10,
+        "liked_by": [
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 25,
+    "fields": {
+        "name": "Leche Alpura",
+        "description": "Caja Leche Alpura 2000 Light de 1Lt - Alpura es una buena vitamina para los ni±os",
+        "price": "5.30",
+        "brand": "Alpura",
+        "stock": 43,
+        "image": "products/Caja_Leche_Alpura_2000_Light_1L12P_-_SCG.jpg",
+        "category": "Leche",
+        "featured": false,
+        "date_added": "2024-11-29T23:32:39.686Z",
+        "likes": 200,
+        "sales": 9,
+        "weight": "1.00",
+        "unit_weight": "kg",
+        "discount": 10,
+        "liked_by": [
+            2
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 26,
+    "fields": {
+        "name": "Caja Leche",
+        "description": "Caja Leche Alpura Deslactosada de 1Lt - Alpura",
+        "price": "5.50",
+        "brand": "Alpura",
+        "stock": 64,
+        "image": "products/Caja_Leche_Alpura_Deslactosada_1L_-_SCG.jpg",
+        "category": "Leche",
+        "featured": true,
+        "date_added": "2024-11-29T23:33:51.535Z",
+        "likes": 100,
+        "sales": 0,
+        "weight": "1.00",
+        "unit_weight": "kg",
+        "discount": null,
+        "liked_by": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 27,
+    "fields": {
+        "name": "Leche Santa Clara",
+        "description": "Media Caja Leche Santa Clara Deslactosada de 1 Lt- Coca-Cola, leche 100% pura de vaca, estß adicionada con vitaminas A y D, especialmente es  para quienes sufren de intolerancia a productos lßcteos.",
+        "price": "5.50",
+        "brand": "Santa Clara",
+        "stock": 42,
+        "image": "products/Caja_Leche_Santa_Clara_Deslactosada_1L_-_SCG.jpg",
+        "category": "Leche",
+        "featured": true,
+        "date_added": "2024-11-29T23:35:00.463Z",
+        "likes": 190,
+        "sales": 0,
+        "weight": "1.00",
+        "unit_weight": "g",
+        "discount": 5,
+        "liked_by": []
+    }
+},
+{
+    "model": "products.product",
+    "pk": 28,
+    "fields": {
+        "name": "Leche Lala Deslactosada",
+        "description": "Caja Leche Lala Deslactosada 1 litro  Lala, es ideal para personas que son intolerantes a la lactosa, para ellos tenemos esta alternativa para que no tengan que hacer a un lado de su alimentaci¾n los nutrimentos que puede aportar la leche.",
+        "price": "7.50",
+        "brand": "Lala",
+        "stock": 72,
+        "image": "products/Leche_Lala_Deslactosada_-_SCG.jpg",
+        "category": "Leche",
+        "featured": true,
+        "date_added": "2024-11-29T23:35:49.529Z",
+        "likes": 5,
+        "sales": 16,
+        "weight": "1.00",
+        "unit_weight": "kg",
+        "discount": null,
+        "liked_by": [
+            1
+        ]
+    }
+},
+{
+    "model": "products.product",
+    "pk": 29,
+    "fields": {
+        "name": "Caja Leche Nutri",
+        "description": "Caja Leche Nutrileche de 1 Lt f¾rmula lßctea con grasa vegetal ultrapasteurizada, estß adicionada con vitaminas (A, D, B1, B2, B5 y hierro).",
+        "price": "6.20",
+        "brand": "Lala",
+        "stock": 51,
+        "image": "products/Leche_Lala_Deslactosada_-_SCG_Xph1I1R.jpg",
+        "category": "Leche",
+        "featured": true,
+        "date_added": "2024-11-29T23:36:41.070Z",
+        "likes": 1,
+        "sales": 0,
+        "weight": "1.00",
+        "unit_weight": "kg",
+        "discount": null,
+        "liked_by": [
+            2
+        ]
+    }
+}
+]
