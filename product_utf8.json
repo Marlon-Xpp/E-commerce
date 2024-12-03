@@ -17,9 +17,7 @@
         "weight": "710.00",
         "unit_weight": "mg",
         "discount": null,
-        "liked_by": [
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -40,10 +38,7 @@
         "weight": "1.00",
         "unit_weight": "kg",
         "discount": 15,
-        "liked_by": [
-            1,
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -64,10 +59,7 @@
         "weight": "2.00",
         "unit_weight": "kg",
         "discount": null,
-        "liked_by": [
-            1,
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -88,11 +80,7 @@
         "weight": "1.00",
         "unit_weight": "kg",
         "discount": null,
-        "liked_by": [
-            1,
-            2,
-            3
-        ]
+        "liked_by": []
     }
 },
 {
@@ -113,9 +101,7 @@
         "weight": "10.00",
         "unit_weight": "g",
         "discount": null,
-        "liked_by": [
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -136,9 +122,7 @@
         "weight": "1.36",
         "unit_weight": "kg",
         "discount": null,
-        "liked_by": [
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -159,9 +143,7 @@
         "weight": "20.00",
         "unit_weight": "g",
         "discount": null,
-        "liked_by": [
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -203,10 +185,7 @@
         "weight": "120.00",
         "unit_weight": "g",
         "discount": 10,
-        "liked_by": [
-            1,
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -227,9 +206,7 @@
         "weight": "102.00",
         "unit_weight": "g",
         "discount": null,
-        "liked_by": [
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -250,9 +227,7 @@
         "weight": "1.00",
         "unit_weight": "kg",
         "discount": null,
-        "liked_by": [
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -273,9 +248,7 @@
         "weight": "900.00",
         "unit_weight": "g",
         "discount": null,
-        "liked_by": [
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -359,9 +332,7 @@
         "weight": "12.00",
         "unit_weight": "mg",
         "discount": 5,
-        "liked_by": [
-            1
-        ]
+        "liked_by": []
     }
 },
 {
@@ -382,9 +353,7 @@
         "weight": "1.00",
         "unit_weight": "g",
         "discount": null,
-        "liked_by": [
-            1
-        ]
+        "liked_by": []
     }
 },
 {
@@ -405,9 +374,7 @@
         "weight": "10.00",
         "unit_weight": "g",
         "discount": 5,
-        "liked_by": [
-            1
-        ]
+        "liked_by": []
     }
 },
 {
@@ -428,9 +395,7 @@
         "weight": "14.00",
         "unit_weight": "lb",
         "discount": 10,
-        "liked_by": [
-            3
-        ]
+        "liked_by": []
     }
 },
 {
@@ -451,9 +416,7 @@
         "weight": "1.00",
         "unit_weight": "kg",
         "discount": 10,
-        "liked_by": [
-            2
-        ]
+        "liked_by": []
     }
 },
 {
@@ -474,11 +437,7 @@
         "weight": "1.00",
         "unit_weight": "kg",
         "discount": null,
-        "liked_by": [
-            1,
-            2,
-            3
-        ]
+        "liked_by": []
     }
 },
 {
@@ -520,9 +479,7 @@
         "weight": "1.00",
         "unit_weight": "kg",
         "discount": null,
-        "liked_by": [
-            1
-        ]
+        "liked_by": []
     }
 },
 {
@@ -543,9 +500,7 @@
         "weight": "1.00",
         "unit_weight": "kg",
         "discount": null,
-        "liked_by": [
-            2
-        ]
+        "liked_by": []
     }
 }
 ]
