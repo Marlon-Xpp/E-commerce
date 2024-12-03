@@ -227,6 +227,7 @@ def cart_detail(request):
                 "favorite_products_count":favorite_products_count,
                 })
 
+
 @csrf_exempt
 def upload_image(request):
     print(request.method)  # Verifica si la solicitud es POST
