@@ -99,7 +99,9 @@
                         <td id="tquantity">{{ item.quantity }}</td>
                         <td class="amount-column" id="tunit-price">S/{{ item.product.price }}</td>
 
+                        {% comment %} añadir el descuento {% endcomment %}
                         <td class="amount-column">-</td>
+                        
                         <!-- <td class="amount-column">2%</td> -->
                         {% comment %} aqui va el total del producto {% endcomment %}
                         <td class="amount-column" >S/ {{ item.total_price }} <td></td>

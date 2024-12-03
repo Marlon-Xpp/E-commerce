@@ -45,16 +45,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 
 # Configuración de archivos estáticos para producción
 if not DEBUG:
     # Cuando no estamos en DEBUG, configuramos STATIC_ROOT y el almacenamiento con WhiteNoise
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-else:
-    # En desarrollo, se usan archivos estáticos desde el directorio 'static' en el proyecto
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+#quitar esto para evitar el error de no existe static en eccoemrs
+# else:
+#     # En desarrollo, se usan archivos estáticos desde el directorio 'static' en el proyecto
+#     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
     
     
 #configuracion de las api de mercado pago el key y el token
@@ -126,16 +127,16 @@ WSGI_APPLICATION = "ecommers.wsgi.application"
 
 DATABASES = {
     # Configurar con el link del render q te da esta es la clave para vinuclar remotamente 
-    # "default": dj_database_url.config(
-    #     default="postgresql://bdecommers_user:F1hm2W85I6XLIemGFQKQxca5m2JQigX1@dpg-ct71v1dumphs73dgl4b0-a.oregon-postgres.render.com/bdecommers",
-    #     conn_max_age=600,
-    # )
+    "default": dj_database_url.config(
+        default="postgresql://bdecommers_user:F1hm2W85I6XLIemGFQKQxca5m2JQigX1@dpg-ct71v1dumphs73dgl4b0-a.oregon-postgres.render.com/bdecommers",
+        conn_max_age=600,
+    )
 
     # esat es la configuracion para trabajr localmente con sqlite3 por defecto
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # }
 }
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -165,7 +166,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
