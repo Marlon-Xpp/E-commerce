@@ -229,9 +229,13 @@ def cart_detail(request):
 
 @csrf_exempt
 def upload_image(request):
+    print(request.method)  # Verifica si la solicitud es POST
+    print(request.FILES)  # Verifica si se están recibiendo archivos
+
     if request.method == 'POST' and request.FILES.get('file'):
         file = request.FILES['file']
         file_path = os.path.join(settings.MEDIA_ROOT, 'products', file.name)
         default_storage.save(file_path, file)
         return JsonResponse({'message': 'File uploaded successfully!'}, status=200)
+
     return JsonResponse({'error': 'Invalid request'}, status=400)
