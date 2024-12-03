@@ -14,4 +14,6 @@ urlpatterns = [
     path('cart/', views.cart_detail, name='cart_detail'),
     
     path('category/<str:category>/', views.products_by_category, name='products_by_category'),
+    
+    path('upload-image/', views.upload_image, name='upload-image'),
 ] 

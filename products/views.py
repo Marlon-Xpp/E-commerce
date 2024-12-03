@@ -7,6 +7,11 @@ from main.views import get_company_data
 from django.http import JsonResponse
 from .models import Product, Cart, CartItem
 
+
+from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import default_storage
+from django.conf import settings
+import os
 # Create your views here.
 
 
@@ -221,3 +226,11 @@ def cart_detail(request):
                 'total_items': total_items,
                 "favorite_products_count":favorite_products_count,
                 })
+
+@csrf_exempt
+def upload_image(request):
+    if request.method == 'POST' and request.FILES.get('file'):
+        file = request.FILES['file']
+        file_path = os.path.join(settings.MEDIA_ROOT, 'products', file.name)
+        default_storage.save(file_path, file)
+        return JsonResponse({'message': 'File uploaded successfully!'}, status=200)
