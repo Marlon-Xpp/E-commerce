@@ -47,26 +47,6 @@ def shop_details(request, product_id):
         "favorite_products_count":favorite_products_count,
     })
 
-# def shoping_cart(request, product_id):
-    
-#     # # Paso 1: Obtener el producto por ID
-#     # products = get_object_or_404(Product, id=product_id)
-    
-#     # # Paso 2: Capturar la información del producto
-#     # product_name = products.name
-#     # product_img = products.image
-#     # product_price = products.price
-    
-#     # # Debug: mostrar la información del producto y el carrito
-#     # print(f"Producto añadido: {product_name}, {product_img}, {product_price}")
-    
-#     return render(request, "shoping-cart.html",{
-#         # "products": products,  # Pasar todos los productos en el carrito
-#         "company_data": get_company_data(),
-#     })
-
-
-
 
 def shop_grid(request):
     product_list = Product.objects.all()  # Obtiene todos los productos
@@ -230,13 +210,9 @@ def cart_detail(request):
 
 @csrf_exempt
 def upload_image(request):
-    print(request.method)  # Verifica si la solicitud es POST
-    print(request.FILES)  # Verifica si se están recibiendo archivos
-
     if request.method == 'POST' and request.FILES.get('file'):
         file = request.FILES['file']
         file_path = os.path.join(settings.MEDIA_ROOT, 'products', file.name)
         default_storage.save(file_path, file)
         return JsonResponse({'message': 'File uploaded successfully!'}, status=200)
-
     return JsonResponse({'error': 'Invalid request'}, status=400)

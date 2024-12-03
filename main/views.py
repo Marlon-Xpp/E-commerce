@@ -123,8 +123,6 @@ def blog_details(request):
 #     return render(request, "blog.html", {"company_data": company_data})
 
 
-
-
 def contact(request):
     company_data = get_company_data()  # Llama a la función para obtener los datos
     print(f"el resultado: {company_data}")
