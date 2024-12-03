@@ -234,3 +234,4 @@ def upload_image(request):
         file_path = os.path.join(settings.MEDIA_ROOT, 'products', file.name)
         default_storage.save(file_path, file)
         return JsonResponse({'message': 'File uploaded successfully!'}, status=200)
+    return JsonResponse({'error': 'Invalid request'}, status=400)
