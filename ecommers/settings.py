@@ -127,16 +127,16 @@ WSGI_APPLICATION = "ecommers.wsgi.application"
 
 DATABASES = {
     # Configurar con el link del render q te da esta es la clave para vinuclar remotamente 
-    "default": dj_database_url.config(
-        default="postgresql://bdecommers_user:F1hm2W85I6XLIemGFQKQxca5m2JQigX1@dpg-ct71v1dumphs73dgl4b0-a.oregon-postgres.render.com/bdecommers",
-        conn_max_age=600,
-    )
+    # "default": dj_database_url.config(
+    #     default="postgresql://bdecommers_user:F1hm2W85I6XLIemGFQKQxca5m2JQigX1@dpg-ct71v1dumphs73dgl4b0-a.oregon-postgres.render.com/bdecommers",
+    #     conn_max_age=600,
+    # )
 
     # esat es la configuracion para trabajr localmente con sqlite3 por defecto
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": BASE_DIR / "db.sqlite3",
-    # }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
