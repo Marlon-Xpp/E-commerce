@@ -127,7 +127,7 @@ WSGI_APPLICATION = "ecommers.wsgi.application"
 DATABASES = {
     # Configurar con el link del render q te da esta es la clave para vinuclar remotamente 
     "default": dj_database_url.config(
-        default="postgresql://bd_8qtw_user:YnRymuk5NDqNluQUZFYtSX0ck6VW2i2n@dpg-d01dqm24d50c73fgrm1g-a/bd_8qtw",
+        default="postgresql://bd_8qtw_user:YnRymuk5NDqNluQUZFYtSX0ck6VW2i2n@dpg-d01dqm24d50c73fgrm1g-a.oregon-postgres.render.com/bd_8qtw",
         conn_max_age=600,
     )
 
