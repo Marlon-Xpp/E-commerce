@@ -38,10 +38,6 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
-STATICFILES_DIRS = [
-    BASE_DIR / "products" / "static",
-    BASE_DIR / "products" / "media",
-]
 
 #configuracion de las api de mercado pago el key y el token
 MERCADOPAGO_TEST_PUBLIC_KEY = 'TEST-c43be07b-ca92-44cd-88cb-87e640ac3dda'
@@ -154,7 +150,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript)
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Media files (IMÁGENES SUBIDAS POR EL USUARIO)
