@@ -73,18 +73,19 @@ INSTALLED_APPS = [
     "accounts",
     "payments",
     "main",
+    "cloudinary",  # 👈 añadido para cloudinary
+    "cloudinary_storage",  # 👈 añadido para cloudinary
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # 👈 añadido el whiteNoiseMideeleware
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # Agregar el whitenoise una ves instalado
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = "ecommers.urls"
