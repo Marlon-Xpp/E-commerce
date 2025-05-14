@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    
+}
+body{
+    background-color: #f5f1f1;
+
+    
+    
+}
+.encabezado{
+    background-color: #f5f1f1;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.titulo-principal{
+    font-size: 24px;
+}
+.imagen{
+    width: 35px;
+    height: 23px;
+}
+
+.menu-principal{
+    background-color: #ffffff;
+    width: 435px;
+    display: flex;
+    margin-top: 60px ;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 15px;
+    align-items: center;
+}
+
+.texto-principal{
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.contenedor-centrado{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-formulario{
+
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.entrada{
+    width: 100%;
+    height: 60px;
+    border: 1px solid #E5E5E5;
+    border-radius: 7px;
+    background-color: #ffffff;
+}
+
+.pregunta-restablecer-contra{
+  
+    justify-items: flex-end;
+    width: 100%;
+    text-align: end;
+    padding: 0px 5px;
+    font-size: 18px;
+    
+
+}
+
+.boton-iniciar-sesion{
+    width: 350px;
+    height: 40px;
+    background-color: #619063;         /* Elimina el color de fondo */
+    border: none;              /* Elimina el borde */
+    color: white;            /* Hereda el color del texto */
+    outline: none; 
+    border-radius: 8px;            /* Elimina el borde de enfoque */
+}
+
+.seccion-otros-accesos{
+   
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.consulta-otros-accesos{
+    margin: 15px 0px;
+}
+
+.boton-google{
+    width: 350px;
+    height: 40px;
+    background-color: #B30A00;         /* Elimina el color de fondo */
+    border: none;              /* Elimina el borde */
+    color: white;            /* Hereda el color del texto */
+    outline: none; 
+    border-radius: 8px;   
+    cursor: pointer;
+}
+.boton-facebook{
+    width: 350px;
+    height: 40px;
+    background-color: #4267B2;         /* Elimina el color de fondo */
+    border: none;              /* Elimina el borde */
+    color: white;            /* Hereda el color del texto */
+    outline: none; 
+    margin-top: 25px;
+    border-radius: 8px;   
+    cursor: pointer;
+}
+
+a {
+    color: inherit;        
+    text-decoration: none; 
+    outline: none; 
+    display: flex;  
+    gap: 5px;    
+    
+}
+
+input:focus {
+    border-color: rgb(80, 189, 80);
+    outline: none;
+}
+input{
+    padding: 10px;
+}
+
+.seccion-crear-cuenta{
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    text-align: center;
+    align-items: center;
+
+}
+
+.pie-pagina{
+    background-color: #ffffff;
+    height: 100px;
+    margin-top:40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pregunta-crear-cuenta{
+    margin: 15px 0px ;
+}
+
+.boton-crear-cuenta{
+    width: 350px;
+    height: 40px;
+    background-color: #ffffff;         /* Elimina el color de fondo */
+    border: 1px solid #619063;              /* Elimina el borde */
+    color: #619063;            /* Hereda el color del texto */
+    outline: none; 
+    border-radius: 8px; 
+    margin-bottom: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+/* estilos del input phone y code postal */
+
+#phone_number.entrada {
+    border-bottom-left-radius: 0; /* Elimina el borde redondeado */
+
+    border-top-left-radius: 0;
+}
+.custom-select {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+}
+
+
+.select-selected {
+    width: 40%;      
+    height: 60px;
+    
+    
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 7px 0px 0px 7px;
+    border: 1px solid #ccc;
+    border-right: none;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.select-items {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    display: none;
+    width: 30%;
+}
+.select-items div {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.select-items div:hover {
+    background-color: #ddd;
+}
+.flag-img {
+    width: 20px;
+    height: auto;
+    margin-right: 8px;
+}
+
+
+.show { display: block; }
