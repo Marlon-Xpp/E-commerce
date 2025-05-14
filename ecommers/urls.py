@@ -30,8 +30,6 @@ urlpatterns = [
     
     # path("orders/", include("orders.urls"), name="orders"),
     
-] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #Se le da esto en la carpeta principal del proyecto y no en la aplicaciones
-
-# Servir media en desarrollo y producción
-if settings.DEBUG or os.environ.get('RENDER'): 
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #Se le da esto en la carpeta principal del proyecto y no en la aplicaciones
+] 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
