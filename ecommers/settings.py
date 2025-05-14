@@ -13,51 +13,36 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta  # Asegúrate de importar timedelta
-
+import cloudinary
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
+DEFAULT_CHARSET = 'utf-8'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='blablablabla12')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Cambiar el debug a false para desplegarlo en heroku
 DEBUG = 'RENDER' not in os.environ
+# DEBUG = True  # desactivarlo si estás en producción
+DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []  
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:    
+if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
+STATICFILES_DIRS = [
+    BASE_DIR / "products" / "static",
+    BASE_DIR / "products" / "media",
+]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-STATIC_URL = "static/"
-
-# Configuración de archivos estáticos para producción
-if not DEBUG:
-    # Cuando no estamos en DEBUG, configuramos STATIC_ROOT y el almacenamiento con WhiteNoise
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#quitar esto para evitar el error de no existe static en eccoemrs
-# else:
-#     # En desarrollo, se usan archivos estáticos desde el directorio 'static' en el proyecto
-#     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-    
-    
 #configuracion de las api de mercado pago el key y el token
 MERCADOPAGO_TEST_PUBLIC_KEY = 'TEST-c43be07b-ca92-44cd-88cb-87e640ac3dda'
 MERCADOPAGO_TEST_ACCESS_TOKEN = 'TEST-5038588232712518-112923-a242cf4b6eff498c30e34d7c5f16bea1-1855980331'
@@ -67,8 +52,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '') # Correo
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')  # Contra
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'mpillacap@autonoma.edu.pe') # Correo
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '10216530')  # Contra
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
@@ -107,7 +92,7 @@ ROOT_URLCONF = "ecommers.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -123,23 +108,25 @@ TEMPLATES = [
 WSGI_APPLICATION = "ecommers.wsgi.application"
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# BD SQLITE3 LOCAL
 DATABASES = {
-    # Configurar con el link del render q te da esta es la clave para vinuclar remotamente 
-    "default": dj_database_url.config(
-        default="postgresql://bdecommers_user:F1hm2W85I6XLIemGFQKQxca5m2JQigX1@dpg-ct71v1dumphs73dgl4b0-a.oregon-postgres.render.com/bdecommers",
-        conn_max_age=600,
-    )
-
-    # esat es la configuracion para trabajr localmente con sqlite3 por defecto
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": BASE_DIR / "db.sqlite3",
-    # }
+    # esta es la configuracion para trabajar localmente con sqlite3 por defecto
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }    
 }
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+
+# BD POSTGRES REMOTO
+# DATABASES = {
+#     # esta configuracion es cuando se conecta de manera remota a la bd con postgres 
+#     "default": dj_database_url.config(
+#         default="",
+#         conn_max_age=600,
+#     )
+# }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -159,15 +146,31 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
-
+LANGUAGE_CODE = "es"
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_TZ = True
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
+# Static files (CSS, JavaScript)
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Media files (IMÁGENES SUBIDAS POR EL USUARIO)
+MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'products/media')  # ❌ Ya no se usa, porque usas Cloudinary
+
+# Configuración de Cloudinary
+cloudinary.config(
+    cloud_name='duv5jc1d0',  # Tu nombre de la nube de Cloudinary
+    api_key='561134372158658',  # Tu API Key de Cloudinary
+    api_secret='neo6ehkdBBVnaMC9lPZc-D-iPx8'  # Tu API Secret de Cloudinary
+)
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Producción en Render con whitenoise
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

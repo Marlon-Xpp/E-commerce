@@ -76,11 +76,6 @@ def validate_fields(**fields):
             #se detentra el codigo y mostrar el error con el msj 
             raise ValidationError(f"El campo {field_name} no puede estar vacio")
 
-#funcion para generar codigo de verificacion del usuario
-def generate_verification_code():
-    return random.randint(10000, 99999)
-
-
 #verificar si existen los datos en la base de datos
 def verify_exists(**fields):
     # Iterar sobre los campos proporcionados
@@ -90,6 +85,10 @@ def verify_exists(**fields):
             # Lanza una excepción inmediatamente con un mensaje específico
             raise ValidationError(f"El {field_name} ya existe, intenta con otro.")
 
+
+#funcion para generar codigo de verificacion del usuario
+def generate_verification_code():
+    return random.randint(10000, 99999)
 
 # Funcion para verificar el codigo y la activacion de su cuenta
 def verify_code(request):

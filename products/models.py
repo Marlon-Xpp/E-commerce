@@ -23,15 +23,11 @@ class Product(models.Model):
     ]
     
     OPTION_CATEGORY =  [
-        ('Leche', 'Leche'),
-        ('Aceites', 'Aceites'),
-        ('Chocolates', 'Chocolates'),
-        ('Frijoles', 'Frijoles'),
-        ('Higiene_Dental', 'Higiene Dental'),
-        ('Fórmulas Infantiles', 'Fórmulas Infantiles'),
-        ('Dulces', 'Dulces'),
-        ('Galleta', 'Galleta'),
-        ('Productos Extras', 'Productos Extras'),
+        ('Cables_Conductores', 'Cables y Conductores Eléctricos'),
+        ('Interruptores_Enchufes', 'Interruptores y Enchufes'),
+        ('Iluminacion', 'Iluminación'),
+        ('Tableros_Distribucion', 'Tableros de Distribución'),
+        ('Accesorios_Instalacion', 'Accesorios de Instalación'),
         
     ]
     
