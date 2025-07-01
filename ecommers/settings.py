@@ -105,7 +105,7 @@ WSGI_APPLICATION = "ecommers.wsgi.application"
 DATABASES = {
     # esta configuracion es cuando se conecta de manera remota a la bd con postgres 
     "default": dj_database_url.config(
-        default="postgresql://freccardi:VPDPZbNkbz2vkwTvPW31FYsMJWHUysSs@dpg-d1i4klbipnbc73cfm8og-a/bd_freccardi_5gqt", # URL INTERNAL
+        default="postgresql://freccardi:VPDPZbNkbz2vkwTvPW31FYsMJWHUysSs@dpg-d1i4klbipnbc73cfm8og-a.oregon-postgres.render.com/bd_freccardi_5gqt", # URL EXTERNAL
         conn_max_age=600,
     )
 }
