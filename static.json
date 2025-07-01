@@ -1,0 +1,4 @@
+{
+    "static/": "staticfiles/",
+    "media/": "media/"
+}

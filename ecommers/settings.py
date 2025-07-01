@@ -19,7 +19,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='blablablabla12')
 DEBUG = 'RENDER' not in os.environ
 # DEBUG = True
 
-# ALLOWED_HOSTS = []
 ALLOWED_HOSTS = []  
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -39,7 +38,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'gs772918@gmail.com') # Correo
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'ftvo inro lcss eyqu')  # Contra
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
 
 # Configuraciones de autenticación
 MAX_ATTEMPTS = 5  # Número máximo de intentos permitidos
