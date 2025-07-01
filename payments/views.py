@@ -13,8 +13,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required
 def checkout(request):
-    
-    
     if request.user.is_authenticated:
         # Si el usuario está autenticado, obtenemos o creamos el carrito
         cart, created = Cart.objects.get_or_create(user=request.user)
@@ -233,9 +231,6 @@ def pending_page(request):
 def get_payment_details(request, payment_id):
     # Inicializa la SDK de MercadoPago con tu access token
     mp = mercadopago.SDK(settings.MERCADOPAGO_TEST_ACCESS_TOKEN)
-
-
-
     # Obtener los detalles del pago usando el payment_id
     payment = mp.payment().get(payment_id)
 
