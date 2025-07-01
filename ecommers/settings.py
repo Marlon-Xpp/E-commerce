@@ -16,8 +16,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='blablablabla12')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Cambiar el debug a false para desplegarlo 
-# DEBUG = 'RENDER' not in os.environ
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
+# DEBUG = True
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = []  
@@ -95,22 +95,22 @@ WSGI_APPLICATION = "ecommers.wsgi.application"
 # Database
 
 # BD SQLITE3 LOCAL
-# DATABASES = {
-#     # esta es la configuracion para trabajar localmente con sqlite3 por defecto
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }    
-# }
+DATABASES = {
+    # esta es la configuracion para trabajar localmente con sqlite3 por defecto
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }    
+}
 
 # BD POSTGRES REMOTO
-DATABASES = {
-    # esta configuracion es cuando se conecta de manera remota a la bd con postgres 
-    "default": dj_database_url.config(
-        default="postgresql://freccardi:VPDPZbNkbz2vkwTvPW31FYsMJWHUysSs@dpg-d1i4klbipnbc73cfm8og-a/bd_freccardi_5gqt",
-        conn_max_age=600,
-    )
-}
+# DATABASES = {
+#     # esta configuracion es cuando se conecta de manera remota a la bd con postgres 
+#     "default": dj_database_url.config(
+#         default="postgresql://freccardi:VPDPZbNkbz2vkwTvPW31FYsMJWHUysSs@dpg-d1i4klbipnbc73cfm8og-a/bd_freccardi_5gqt", # URL INTERNAL
+#         conn_max_age=600,
+#     )
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -142,15 +142,15 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Media files (IMÁGENES SUBIDAS POR EL USUARIO)
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  # ❌ Ya no se usa, porque usas Cloudinary
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  # ❌ Ya no se usa, porque usas Cloudinary
 
 # Configuración de Cloudinary
-cloudinary.config(
-    cloud_name='duv5jc1d0',  # Tu nombre de la nube de Cloudinary
-    api_key='561134372158658',  # Tu API Key de Cloudinary
-    api_secret='neo6ehkdBBVnaMC9lPZc-D-iPx8'  # Tu API Secret de Cloudinary
-)
+# cloudinary.config(
+#     cloud_name='duv5jc1d0',  # Tu nombre de la nube de Cloudinary
+#     api_key='561134372158658',  # Tu API Key de Cloudinary
+#     api_secret='neo6ehkdBBVnaMC9lPZc-D-iPx8'  # Tu API Secret de Cloudinary
+# )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 

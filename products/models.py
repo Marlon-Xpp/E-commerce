@@ -37,8 +37,8 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio del Producto")  # Precio del producto
     brand = models.CharField(max_length=255, verbose_name="Marca del Producto")  # Marca o fabricante del producto
     stock = models.PositiveIntegerField(verbose_name="Stock del Producto")  # Cantidad de stock disponible
-    # image = models.ImageField(upload_to='products/', verbose_name="Imagen del Producto")  # Imagen del producto
-    image = CloudinaryField(verbose_name="Imagen del Producto")
+    image = models.ImageField(upload_to='products/', verbose_name="Imagen del Producto")  # Imagen del producto
+    # image = CloudinaryField(verbose_name="Imagen del Producto")
     
     category = models.CharField(choices=OPTION_CATEGORY, max_length=255, verbose_name="Categoría del Producto")  # Categoría del producto (ej: "Frutas", "Verduras")
     featured = models.BooleanField(default=False, verbose_name="Producto Destacado")  # Indica si el producto es destacado o no
